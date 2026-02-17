@@ -12,13 +12,15 @@ default ms_lopez_in_lobby = True
 default ms_lopez_has_event = False
 
 default amber_in_apartment = True
-default amber_in_hallway = False
 default amber_has_event = False
 
 default razor_in_apartment = True
 default razor_has_event = False
 
-default uncle_in_shop = True
+default mr_lee_in_store = True
+default mr_lee_has_event = False
+
+default uncle_in_alley = True
 default uncle_has_event = False
 
 default tanya_in_cafe = False
@@ -34,6 +36,12 @@ default tanya_has_event = False
 default quest_meet_ms_lopez_complete = False
 default quest_fix_amber_door_started = False
 default quest_fix_amber_door_complete = False
+default quest_get_hinges = False
+default quest_check_uncle_shop = False
+default pawned_ring = False
+default has_hinges = False
+default refused_pawn = False
+default quest_get_ring_back = False
 default quest_find_job_started = False
 default quest_find_job_complete = False
 default quest_hot_water_fixed = False
@@ -50,7 +58,6 @@ default in_story_scene = True
 label setup_a02_event:
     """Enable A02 - Fixing Amber's Door"""
     $ ms_lopez_has_event = True
-    $ quest_fix_amber_door_started = True
     return
 
 label setup_a03_event:
@@ -92,9 +99,16 @@ label talk_ms_lopez:
             $ renpy.pause(hard=True)
             jump exploration_loop
         
-        "Talk about tasks" if quest_meet_ms_lopez_complete and not quest_fix_amber_door_complete:
+        "Talk about tasks" if quest_meet_ms_lopez_complete and not quest_fix_amber_door_started:
             $ ms_lopez_has_event = False
             jump A02_1_LOBBY_TASK
+        
+        "About Amber's door..." if quest_fix_amber_door_started and not quest_fix_amber_door_complete:
+            MsLopez "Have you checked on Amber's door yet? She's on the third floor, to the left."
+            MsLopez "Just head up to her apartment and talk to her."
+            show screen apartment_lobby_screen
+            $ renpy.pause(hard=True)
+            jump exploration_loop
         
         "Never mind":
             show screen apartment_lobby_screen
@@ -140,14 +154,16 @@ label generic_ms_lopez_chat:
 # Interaction routing
 label talk_amber:
     """Amber interaction handler"""
-    hide screen amber_apartment_screen
+    hide screen apartment_amber_apartment_screen
     
     if amber_has_event and quest_fix_amber_door_started and not quest_fix_amber_door_complete:
         $ amber_has_event = False
         jump A02_2_AMBER_DOOR
+    elif has_hinges and not quest_fix_amber_door_complete:
+        jump A02_5_FIX_DOOR
     else:
         call generic_amber_chat
-        show screen amber_apartment_screen
+        show screen apartment_amber_apartment_screen
         $ renpy.pause(hard=True)
         jump exploration_loop
 
@@ -160,6 +176,80 @@ label generic_amber_chat:
 
     MC "Just checking in."
     Amber "Well, I'm fine. Door's working great, by the way."
+
+    return
+
+# ==========================================================
+# MR. LEE
+# ==========================================================
+# Interaction routing
+label talk_mr_lee:
+    """Mr. Lee interaction handler"""
+    hide screen grocery_store_interior_screen
+
+    menu:
+        "What would you like to say?"
+
+        "Chat with Mr. Lee":
+            call generic_mr_lee_chat
+            show screen grocery_store_interior_screen
+            $ renpy.pause(hard=True)
+            jump exploration_loop
+
+        "Ask about door hinges" if quest_get_hinges and not quest_check_uncle_shop:
+            jump A02_3_MR_LEE_STORE
+
+        "Never mind":
+            show screen grocery_store_interior_screen
+            $ renpy.pause(hard=True)
+            jump exploration_loop
+
+# Generic conversation
+label generic_mr_lee_chat:
+    scene bg grocery_store_interior with fade
+    # show MrLee neutral
+
+    MrLee "What do you want? You buying something or not?"
+
+    MC "Just browsing, Mr. Lee."
+    MrLee "Browsing doesn't pay the bills. Buy something or get out."
+
+    return
+
+# ==========================================================
+# UNCLE
+# ==========================================================
+# Interaction routing
+label talk_uncle:
+    """Uncle interaction handler"""
+    hide screen apartment_alley_screen
+
+    menu:
+        "What would you like to say?"
+
+        "Chat with Uncle":
+            call generic_uncle_chat
+            show screen apartment_alley_screen
+            $ renpy.pause(hard=True)
+            jump exploration_loop
+
+        "Ask about door hinges" if quest_check_uncle_shop and not has_hinges:
+            jump A02_4_UNCLE_PAWN_SHOP
+
+        "Never mind":
+            show screen apartment_alley_screen
+            $ renpy.pause(hard=True)
+            jump exploration_loop
+
+# Generic conversation
+label generic_uncle_chat:
+    scene bg apartment_alley with fade
+    # show Uncle neutral
+
+    Uncle "Well, well... if it isn't my favorite nephew."
+
+    MC "Hey Uncle, how's business?"
+    Uncle "Same as always. People pawn their junk, I sell it. Circle of life."
 
     return
 

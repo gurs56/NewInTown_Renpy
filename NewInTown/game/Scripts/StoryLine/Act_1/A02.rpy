@@ -74,7 +74,7 @@ label both_options_continue:
     
     # Set quest flag
     $ quest_fix_amber_door_started = True
-    $ amber_in_hallway = True
+    $ amber_in_apartment = True
     $ amber_has_event = True
     
     # Fade out
@@ -131,7 +131,9 @@ label A02_2_AMBER_DOOR:
     # Fade out
     scene black with fade
     
-    return
+    $ in_story_scene = False
+    show screen apartment_amber_apartment_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A02_3 - Mr. Lee's Convenience Store
@@ -170,7 +172,9 @@ label A02_3_MR_LEE_STORE:
     # Fade out
     scene black with fade
     
-    return
+    $ in_story_scene = False
+    show screen grocery_store_interior_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A02_4 - Uncle's Pawn Shop
@@ -246,8 +250,9 @@ label option1_pawn_ring:
     # Fade out
     scene black with fade
     
-    # Continue to fixing the door
-    jump A02_5_FIX_DOOR
+    $ in_story_scene = False
+    show screen apartment_alley_screen
+    jump exploration_loop
 
 # Option 2: Don't pawn the ring (forces player to reconsider)
 label option2_no_pawn:
@@ -268,7 +273,9 @@ label option2_no_pawn:
     # Fade out
     scene black with fade
     
-    return
+    $ in_story_scene = False
+    show screen apartment_alley_screen
+    jump exploration_loop
 
 # ==========================================================
 # CALLBACK SCENES - Player must return to pawn shop
@@ -360,12 +367,15 @@ label A02_5_FIX_DOOR:
     # Set quest flags
     $ quest_fix_amber_door = False
     $ quest_amber_door_complete = True
+    $ quest_fix_amber_door_complete = True
     $ quest_report_ms_lopez = True
     
     # Fade out
     scene black with fade
     
-    return
+    $ in_story_scene = False
+    show screen apartment_amber_apartment_screen
+    jump exploration_loop
 
 # ==========================================================
 # END OF A02 SCENES

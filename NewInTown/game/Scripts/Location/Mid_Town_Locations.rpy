@@ -27,6 +27,14 @@ screen apartment_building_screen():
         action [Hide("apartment_building_screen"), Show("apartment_lobby_screen")]
         add "gui/blacksqaure_Button_Map.jpg" fit "contain"
         text "To Lobby" xalign 0.5 yalign 0.8 size 28
+    # Alleyway button (Right)
+    button:
+        xysize (120, 120)
+        xpos 1400
+        ypos 500
+        action [Hide("apartment_building_screen"), Show("apartment_alley_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Alley" xalign 0.5 yalign 0.8 size 24
     text "Apartment Building" xalign 0.5 yalign 0.1 size 50
 
 # ==========================================================
@@ -286,6 +294,7 @@ screen apartment_amber_apartment_screen():
     modal True
     zorder 100
     add "bg apartment_amber_apartment"
+    use character_buttons_amber_apartment
     # Button to Amber's Bedroom (Left)
     button:
         xysize (120, 120)
@@ -378,3 +387,157 @@ screen apartment_razor_apartment_screen():
         add "gui/blacksqaure_Button_Map.jpg" fit "contain"
         text "To Hallway" xalign 0.5 yalign 0.8 size 24
     text "Razor's Apartment" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+# ALLEYWAY BEHIND APARTMENT SCREEN
+# ==========================================================
+screen apartment_alley_screen():
+    modal True
+    zorder 100
+    add "bg apartment_alley"
+    use character_buttons_alley
+    # Back to apartment building button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("apartment_alley_screen"), Show("apartment_building_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Building" xalign 0.5 yalign 0.8 size 24
+    text "Alleyway" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+#CAFE SCREENS
+# ==========================================================
+screen cafe_building_screen():
+    modal True
+    zorder 100
+    add "bg cafe_building"
+    # Button to cafe interior (Center)
+    button:
+        xysize (120, 120)
+        xpos 800
+        ypos 500
+        action [Hide("cafe_building_screen"), Show("cafe_interior_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "Enter Cafe" xalign 0.5 yalign 0.8 size 24
+    # Back to mid town map button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("cafe_building_screen"), Show("mid_town_map_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Mid Town Map" xalign 0.5 yalign 0.8 size 24
+    text "Cafe" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+# CAFE INTERIOR SCREEN
+# ==========================================================
+screen cafe_interior_screen():
+    modal True
+    zorder 100
+    add "bg cafe_interior"
+    # Button to cafe kitchen (Center)
+    button:
+        xysize (120, 120)
+        xpos 800
+        ypos 500
+        action [Hide("cafe_interior_screen"), Show("cafe_kitchen_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Kitchen" xalign 0.5 yalign 0.8 size 24
+    # Back to cafe building button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("cafe_interior_screen"), Show("cafe_building_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Cafe Entrance" xalign 0.5 yalign 0.8 size 24
+    text "Cafe Interior" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+# CAFE KITCHEN SCREEN
+# ==========================================================
+screen cafe_kitchen_screen():
+    modal True
+    zorder 100
+    add "bg cafe_kitchen"
+    # Button to storage room (Center)
+    button:
+        xysize (120, 120)
+        xpos 800
+        ypos 500
+        action [Hide("cafe_kitchen_screen"), Show("cafe_storage_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Storage" xalign 0.5 yalign 0.8 size 24
+    # Back to cafe interior button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("cafe_kitchen_screen"), Show("cafe_interior_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Cafe Interior" xalign 0.5 yalign 0.8 size 24
+    text "Cafe Kitchen" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+# CAFE STORAGE SCREEN
+# ==========================================================
+screen cafe_storage_screen():
+    modal True
+    zorder 100
+    add "bg cafe_storage"
+    # Back to cafe kitchen button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("cafe_storage_screen"), Show("cafe_kitchen_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Kitchen" xalign 0.5 yalign 0.8 size 24
+    text "Cafe Storage" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+# GROCERY STORE (MR. LEE'S) SCREEN
+# ==========================================================
+screen grocery_store_screen():
+    modal True
+    zorder 100
+    add "bg grocery_store"
+    # Button to store interior (Center)
+    button:
+        xysize (120, 120)
+        xpos 800
+        ypos 500
+        action [Hide("grocery_store_screen"), Show("grocery_store_interior_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "Enter Store" xalign 0.5 yalign 0.8 size 24
+    # Back to mid town map button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("grocery_store_screen"), Show("mid_town_map_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "To Mid Town Map" xalign 0.5 yalign 0.8 size 24
+    text "Mr. Lee's Grocery Store" xalign 0.5 yalign 0.1 size 50
+
+# ==========================================================
+# GROCERY STORE INTERIOR SCREEN
+# ==========================================================
+screen grocery_store_interior_screen():
+    modal True
+    zorder 100
+    add "bg grocery_store_interior"
+    use character_buttons_grocery
+    # Back to store exterior button (Top Left)
+    button:
+        xysize (100, 100)
+        xpos 50
+        ypos 50
+        action [Hide("grocery_store_interior_screen"), Show("grocery_store_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "Exit Store" xalign 0.5 yalign 0.8 size 24
+    text "Mr. Lee's Store Interior" xalign 0.5 yalign 0.1 size 50
+

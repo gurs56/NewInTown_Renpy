@@ -28,4 +28,15 @@ image bg apartment_amber_bathroom = im.Scale("images/Test_Backgrounds/Apartment_
 # --- RAZOR'S APARTMENT ---
 image bg apartment_razor_apartment = im.Scale("images/Test_Backgrounds/Apartment_Razor_Apartment_BG.png", 1920, 1080)
 
+# --- ALLEYWAY BEHIND APARTMENT ---
+image bg apartment_alley = im.Scale("images/Test_Backgrounds/alley.png", 1920, 1080)
 
+# --- Mr.Lee's Grocery Store  ---
+image bg grocery_store = im.Scale("images/Test_Backgrounds/exterior.png", 1920, 1080)
+image bg grocery_store_interior = im.Scale("images/Test_Backgrounds/Interior2.png", 1920, 1080)
+
+# --- CAFE ---
+image bg cafe_building = im.Scale("images/Test_Backgrounds/Cafe.png", 1920, 1080)
+image bg cafe_interior = im.Scale("images/Test_Backgrounds/Interior1.png", 1920, 1080)
+image bg cafe_kitchen = im.Scale("images/Test_Backgrounds/Kitchen.png", 1920, 1080)
+image bg cafe_storage = im.Scale("images/Test_Backgrounds/storage.png", 1920, 1080)

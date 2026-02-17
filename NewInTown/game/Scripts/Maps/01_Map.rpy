@@ -74,5 +74,24 @@ screen mid_town_map_screen():
         ypos 490
         action [Hide("mid_town_map_screen"), Show("apartment_building_screen")]
         add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "Apartment" xalign 0.5 yalign 0.8 size 20
+    
+    # Cafe button
+    button:
+        xysize (100, 100)
+        xpos 600
+        ypos 490
+        action [Hide("mid_town_map_screen"), Show("cafe_building_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "Cafe" xalign 0.5 yalign 0.8 size 20
+    
+    # Corner Store (Mr. Lee's) button
+    button:
+        xysize (100, 100)
+        xpos 1200
+        ypos 490
+        action [Hide("mid_town_map_screen"), Show("grocery_store_screen")]
+        add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+        text "Corner Store" xalign 0.5 yalign 0.8 size 20
 
 

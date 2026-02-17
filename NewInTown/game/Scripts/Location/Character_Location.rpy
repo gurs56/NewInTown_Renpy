@@ -14,36 +14,77 @@ screen character_buttons_lobby():
         # Ms. Lopez - always in lobby
         if ms_lopez_in_lobby:
             imagebutton:
-                idle "images/Test_Characters/body1 2.png"
-                hover "images/Test_Characters/body1 2.png"
-                action Jump("talk_ms_lopez")
+                idle im.Scale("images/Test_Characters/body1 2.png", 200, 400)
+                hover im.Scale("images/Test_Characters/body1 2.png", 220, 440)
+                action [Hide("apartment_lobby_screen"), Jump("talk_ms_lopez")]
                 xpos 400
-                ypos 400
-                xanchor 0.5
-                yanchor 1.0
-                focus_mask True
+                ypos 200
 
-            # Character name label
-            text "Ms. Lopez" xpos 700 ypos 370 size 22 color "#ffffff"
+            # Character name label (aligned with button)
+            text "Ms. Lopez" xpos 400 ypos 170 size 22 color "#ffffff"
 
             # Quest indicator (exclamation mark if she has an event)
             if ms_lopez_has_event:
-                text "!" xpos 730 ypos 395 size 40 color "#ffff00" bold True
+                text "!" xpos 430 ypos 195 size 40 color "#ffff00" bold True
 
 # ==========================================================
-# HALLWAY CHARACTER BUTTONS
+# AMBER'S APARTMENT CHARACTER BUTTONS
 # ==========================================================
-screen character_buttons_hallway():
+screen character_buttons_amber_apartment():
     # Only show when NOT in a story scene
     if not in_story_scene:
-        if amber_in_hallway:
-            button:
-                xpos 720
-                ypos 320
-                xysize (300, 600)
-                action Jump("talk_amber")
-                add "images/Test_Characters/body1 2.png" fit "contain"
-            text "Amber" xpos 720 ypos 290 size 22 color "#ffffff"
+        if amber_in_apartment:
+            imagebutton:
+                idle im.Scale("images/Test_Characters/body1 2.png", 200, 400)
+                hover im.Scale("images/Test_Characters/body1 2.png", 220, 440)
+                action [Hide("apartment_amber_apartment_screen"), Jump("talk_amber")]
+                xpos 400
+                ypos 200
+            text "Amber" xpos 400 ypos 170 size 22 color "#ffffff"
             if amber_has_event:
-                text "!" xpos 750 ypos 315 size 40 color "#ffff00" bold True
+                text "!" xpos 430 ypos 195 size 40 color "#ffff00" bold True
+# ==========================================================
+# GROCERY STORE CHARACTER BUTTONS
+# ==========================================================
+screen character_buttons_grocery():
+    # Only show when NOT in a story scene
+    if not in_story_scene:
+        # Mr. Lee - always in his store
+        if mr_lee_in_store:
+            imagebutton:
+                idle im.Scale("images/Test_Characters/body1 2.png", 200, 400)
+                hover im.Scale("images/Test_Characters/body1 2.png", 220, 440)
+                action [Hide("grocery_store_interior_screen"), Jump("talk_mr_lee")]
+                xpos 400
+                ypos 200
+
+            # Character name label
+            text "Mr. Lee" xpos 400 ypos 170 size 22 color "#ffffff"
+
+            # Quest indicator (exclamation mark if he has an event)
+            if mr_lee_has_event:
+                text "!" xpos 430 ypos 195 size 40 color "#ffff00" bold True
+
+# ==========================================================
+# ALLEY CHARACTER BUTTONS
+# ==========================================================
+screen character_buttons_alley():
+    # Only show when NOT in a story scene
+    if not in_story_scene:
+        # Uncle - always in the alley (for now)
+        if uncle_in_alley:
+            imagebutton:
+                idle im.Scale("images/Test_Characters/body1 2.png", 200, 400)
+                hover im.Scale("images/Test_Characters/body1 2.png", 220, 440)
+                action [Hide("apartment_alley_screen"), Jump("talk_uncle")]
+                xpos 400
+                ypos 200
+
+            # Character name label
+            text "Uncle" xpos 400 ypos 170 size 22 color "#ffffff"
+
+            # Quest indicator (exclamation mark if he has an event)
+            if uncle_has_event:
+                text "!" xpos 430 ypos 195 size 40 color "#ffff00" bold True
+
 # ==========================================================
