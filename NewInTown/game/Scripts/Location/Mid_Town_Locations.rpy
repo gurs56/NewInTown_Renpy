@@ -257,6 +257,15 @@ screen apartment_mc_bedroom_screen():
         action [Hide("apartment_mc_bedroom_screen"), Show("apartment_mc_apartment_screen")]
         add "gui/blacksqaure_Button_Map.jpg" fit "contain"
         text "To MC's Apartment" xalign 0.5 yalign 0.8 size 24
+    # Sleep button - only shows at Night (Center)
+    if time_of_day.is_night():
+        button:
+            xysize (200, 80)
+            xalign 0.5
+            ypos 500
+            action [Hide("apartment_mc_bedroom_screen"), Jump("go_to_sleep")]
+            add "gui/blacksqaure_Button_Map.jpg" fit "contain"
+            text "Sleep" xalign 0.5 yalign 0.5 size 32
     text "MC's Bedroom" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_mc_kitchen_screen():

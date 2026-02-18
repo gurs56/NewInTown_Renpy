@@ -9,6 +9,7 @@ label start:
     $ in_story_scene = False  # Enable free roam
     $ quest_meet_ms_lopez_complete = True  # Skip intro quest
     call setup_a02_event  # Enable A02 event
+    show screen time_display
     show screen apartment_building_screen
     jump exploration_loop
     
