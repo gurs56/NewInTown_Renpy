@@ -67,7 +67,7 @@ label A01_meeting_lopez:
             # --- OPTION 1 ---
             # Script says: MC (Pose: Polite)
             # show MC polite
-            MC "Hi, I'm [mcname]. Nice to meet you."
+            MC "Hi, I'm [mc_name]. Nice to meet you."
 
             # Script says: Uncle (Pose: Wise)
             # show Uncle wise
@@ -77,7 +77,7 @@ label A01_meeting_lopez:
             # --- OPTION 2 ---
             # Script says: MC (Pose: Apologetic)
             # show MC apologetic
-            MC "Sorry for meddling. I'm [mcname]."
+            MC "Sorry for meddling. I'm [mc_name]."
 
             # Script says: Uncle (Calm)
             # show Uncle calm
@@ -188,7 +188,7 @@ label A01_meeting_lopez:
     Uncle "Shit, kid, I'm sorry to hear that. Even though I never had a mom, I know losing one can be the hardest thing sometimes… If you need something, I'll be here in my pawnshop."
 
     # Narrator line
-    "Ms. Lopez lets [mcname] go."
+    "Ms. Lopez lets [mc_name] go."
 
     # Script says: Ms. Lopez (Pose: Sad)
     # show MsLopez sad

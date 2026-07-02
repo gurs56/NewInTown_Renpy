@@ -8,6 +8,7 @@
 # APARTMENT BUILDING SCREEN
 # ==========================================================
 screen apartment_building_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_building"
@@ -41,6 +42,7 @@ screen apartment_building_screen():
 # APARTMENT LOBBY SCREEN
 # ==========================================================
 screen apartment_lobby_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_lobby"
@@ -75,6 +77,7 @@ screen apartment_lobby_screen():
 # APARTMENT ELEVATOR SCREEN
 # ==========================================================
 screen apartment_elevator_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_elevator"
@@ -108,6 +111,7 @@ screen apartment_elevator_screen():
 # APARTMENT HALLWAY SCREEN
 # ==========================================================
 screen apartment_hallway_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_hallway"
@@ -149,6 +153,7 @@ screen apartment_hallway_screen():
 # APARTMENT BASEMENT SCREEN
 # ==========================================================
 screen apartment_basement_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_basement"
@@ -174,6 +179,7 @@ screen apartment_basement_screen():
 # APARTMENT BOILER ROOM SCREEN
 # ==========================================================
 screen apartment_boiler_room_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_boiler_room"
@@ -191,6 +197,7 @@ screen apartment_boiler_room_screen():
 # APARTMENT LANDLORD OFFICE SCREEN
 # ==========================================================
 screen apartment_landlord_office_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_landlord_office"
@@ -208,6 +215,7 @@ screen apartment_landlord_office_screen():
 # MC'S APARTMENT SCREENS
 # ==========================================================
 screen apartment_mc_apartment_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_mc_apartment"
@@ -246,6 +254,7 @@ screen apartment_mc_apartment_screen():
     text "MC's Apartment" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_mc_bedroom_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_mc_bedroom"
@@ -269,6 +278,7 @@ screen apartment_mc_bedroom_screen():
     text "MC's Bedroom" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_mc_kitchen_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_mc_kitchen"
@@ -283,6 +293,7 @@ screen apartment_mc_kitchen_screen():
     text "MC's Kitchen" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_mc_bathroom_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_mc_bathroom"
@@ -300,6 +311,7 @@ screen apartment_mc_bathroom_screen():
 # AMBER'S APARTMENT SCREENS
 # ==========================================================
 screen apartment_amber_apartment_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_amber_apartment"
@@ -339,6 +351,7 @@ screen apartment_amber_apartment_screen():
     text "Amber's Apartment" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_amber_bedroom_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_amber_bedroom"
@@ -353,6 +366,7 @@ screen apartment_amber_bedroom_screen():
     text "Amber's Bedroom" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_amber_kitchen_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_amber_kitchen"
@@ -367,6 +381,7 @@ screen apartment_amber_kitchen_screen():
     text "Amber's Kitchen" xalign 0.5 yalign 0.1 size 50
 
 screen apartment_amber_bathroom_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_amber_bathroom"
@@ -384,6 +399,7 @@ screen apartment_amber_bathroom_screen():
 # RAZOR'S APARTMENT SCREEN
 # ==========================================================
 screen apartment_razor_apartment_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_razor_apartment"
@@ -401,6 +417,7 @@ screen apartment_razor_apartment_screen():
 # ALLEYWAY BEHIND APARTMENT SCREEN
 # ==========================================================
 screen apartment_alley_screen():
+    tag location
     modal True
     zorder 100
     add "bg apartment_alley"
@@ -419,6 +436,7 @@ screen apartment_alley_screen():
 #CAFE SCREENS
 # ==========================================================
 screen cafe_building_screen():
+    tag location
     modal True
     zorder 100
     add "bg cafe_building"
@@ -444,6 +462,7 @@ screen cafe_building_screen():
 # CAFE INTERIOR SCREEN
 # ==========================================================
 screen cafe_interior_screen():
+    tag location
     modal True
     zorder 100
     add "bg cafe_interior"
@@ -469,6 +488,7 @@ screen cafe_interior_screen():
 # CAFE KITCHEN SCREEN
 # ==========================================================
 screen cafe_kitchen_screen():
+    tag location
     modal True
     zorder 100
     add "bg cafe_kitchen"
@@ -494,6 +514,7 @@ screen cafe_kitchen_screen():
 # CAFE STORAGE SCREEN
 # ==========================================================
 screen cafe_storage_screen():
+    tag location
     modal True
     zorder 100
     add "bg cafe_storage"
@@ -511,6 +532,7 @@ screen cafe_storage_screen():
 # GROCERY STORE (MR. LEE'S) SCREEN
 # ==========================================================
 screen grocery_store_screen():
+    tag location
     modal True
     zorder 100
     add "bg grocery_store"
@@ -536,6 +558,7 @@ screen grocery_store_screen():
 # GROCERY STORE INTERIOR SCREEN
 # ==========================================================
 screen grocery_store_interior_screen():
+    tag location
     modal True
     zorder 100
     add "bg grocery_store_interior"
