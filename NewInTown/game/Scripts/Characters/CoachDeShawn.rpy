@@ -11,5 +11,5 @@ init python:
         "neutral", "apologetic", "confident", "idle", "surprised",
         "welcoming",
     ]:
-        renpy.image("CoachDeShawn " + _m, im.Scale("images/Test_Characters/body1 3.png", 600, 900))
+        renpy.image("CoachDeShawn " + _m, im.Scale("images/Test_Characters/body1_3.png", 600, 900))
     del _m

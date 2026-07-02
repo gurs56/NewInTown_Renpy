@@ -12,7 +12,7 @@ init python:
         "blushing", "composed", "explaining", "happy", "idle",
         "intrigued", "irritated", "laughing", "seductive", "welcoming",
     ]:
-        renpy.image("Tanya " + _m, im.Scale("images/Test_Characters/body1 2.png", 600, 900))
+        renpy.image("Tanya " + _m, im.Scale("images/Test_Characters/body1_2.png", 600, 900))
     del _m
 
 # ==========================================================

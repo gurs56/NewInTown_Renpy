@@ -10,6 +10,8 @@
 # SCENE A02_1 - Meeting Ms. Lopez at the Lobby
 # ==========================================================
 label A02_1_LOBBY_TASK:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_lobby with fade
@@ -30,31 +32,31 @@ label A02_1_LOBBY_TASK:
     # Player choice menu
     menu:
         "Promise to handle the situation":
-            jump option1_promise
+            jump .promise
         
         "Ask who Amber is":
-            jump option2_ask_amber
+            jump .ask_amber
 
 # Option 1: Promise to handle it
-label option1_promise:
+label .promise:
     
     MC confident "That's a regular situation at my place. I'll fix it in no time."
     
     MsLopez idle "Great. Just head to Amber's place and you'll see the door that never closes."
     
-    jump both_options_continue
+    jump .merge
 
 # Option 2: Ask who Amber is
-label option2_ask_amber:
+label .ask_amber:
     
     MC confused "Sure! But… Umm, who is Amber?"
     
     MsLopez idle "Amber is one of the tenants here. She's really a hard-working mother, just like Jessia."
     
-    jump both_options_continue
+    jump .merge
 
 # Both options continue here
-label both_options_continue:
+label .merge:
     
     MsLopez stressed "I feel so bad for not being able to fix her door for quite some time now."
     
@@ -88,6 +90,8 @@ label both_options_continue:
 # SCENE A02_2 - Amber's Apartment
 # ==========================================================
 label A02_2_AMBER_DOOR:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_amber_apartment with fade
@@ -139,9 +143,11 @@ label A02_2_AMBER_DOOR:
 # SCENE A02_3 - Mr. Lee's Convenience Store
 # ==========================================================
 label A02_3_MR_LEE_STORE:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
-    scene bg mr_lee_store with fade
+    scene bg grocery_store_interior with fade
     
     # Show Mr. Lee (add character when available)
     # show MrLee strict
@@ -180,9 +186,11 @@ label A02_3_MR_LEE_STORE:
 # SCENE A02_4 - Uncle's Pawn Shop
 # ==========================================================
 label A02_4_UNCLE_PAWN_SHOP:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
-    scene bg uncle_pawn_shop with fade
+    scene bg apartment_alley with fade
     
     # Show Uncle (add character when available)
     # show Uncle happy
@@ -222,13 +230,13 @@ label A02_4_UNCLE_PAWN_SHOP:
     # Player choice menu
     menu:
         "Pawn the ring":
-            jump option1_pawn_ring
+            jump .pawn_ring
         
         "Do not pawn the ring":
-            jump option2_no_pawn
+            jump .no_pawn
 
 # Option 1: Pawn the ring
-label option1_pawn_ring:
+label .pawn_ring:
     
     MC bargaining "Ok…"
     
@@ -255,7 +263,7 @@ label option1_pawn_ring:
     jump exploration_loop
 
 # Option 2: Don't pawn the ring (forces player to reconsider)
-label option2_no_pawn:
+label .no_pawn:
     
     MC thinking "(...)"
     
@@ -284,7 +292,7 @@ label option2_no_pawn:
 # Attempt to visit Mr. Lee again
 label A02_CALLBACK_MR_LEE:
     
-    scene bg mr_lee_store_exterior with fade
+    scene bg grocery_store with fade
     
     MC "Going back in there without money is probably not a good idea…"
     
@@ -322,6 +330,8 @@ label A02_CALLBACK_MS_LOPEZ:
 # SCENE A02_5 - Fixing Amber's Door
 # ==========================================================
 label A02_5_FIX_DOOR:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_amber_apartment with fade
@@ -364,11 +374,9 @@ label A02_5_FIX_DOOR:
     
     Amber seductive "Sure thing, perv~"
     
-    # Set quest flags
-    $ quest_fix_amber_door = False
-    $ quest_amber_door_complete = True
+    # Quest complete - unlock the next event (A03: finding a job)
     $ quest_fix_amber_door_complete = True
-    $ quest_report_ms_lopez = True
+    call setup_a03_event
     
     # Fade out
     scene black with fade

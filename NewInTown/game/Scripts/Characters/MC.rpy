@@ -10,7 +10,7 @@ define MC = Character("[mc_name]", color="#54c0f2", image="MC")
 # uses "[mc_name]", which re-reads this every time the MC speaks,
 # so changing it updates ALL dialogue, narration ([mc_name]) and
 # the phone instantly. Starts as "Aaron" until the player picks.
-default mc_name = "Aaron"
+default mc_name = "EgeMan"
 
 # Drop-in name entry. When the name-entry screen is built, either
 # `call set_player_name` from it, or just set `mc_name` directly
@@ -37,5 +37,5 @@ init python:
         "hesitant", "idle", "innocent", "intrigued", "laughing",
         "mischievous", "proud", "sad", "scared", "tired", "worried",
     ]:
-        renpy.image("MC " + _m, im.Scale("images/Test_Characters/body1 3.png", 600, 900))
+        renpy.image("MC " + _m, im.Scale("images/Test_Characters/body1_3.png", 600, 900))
     del _m

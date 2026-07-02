@@ -12,7 +12,7 @@ init python:
         "sassy", "irritated", "smirk", "concerned", "idle",
         "laughing", "seductive", "underwear", "work_uniform",
     ]:
-        renpy.image("Amber " + _m, im.Scale("images/Test_Characters/body1 2.png", 600, 900))
+        renpy.image("Amber " + _m, im.Scale("images/Test_Characters/body1_2.png", 600, 900))
     del _m
 
 # ==========================================================
@@ -25,7 +25,8 @@ default amber_has_event = False
 # INTERACTION ROUTING
 # ==========================================================
 label talk_amber:
-    """Amber interaction handler"""
+    # Amber interaction handler (must be a # comment - a bare
+    # string inside a label would display as dialogue!)
     hide screen apartment_amber_apartment_screen
 
     if amber_has_event and quest_fix_amber_door_started and not quest_fix_amber_door_complete:
@@ -36,7 +37,6 @@ label talk_amber:
     else:
         call generic_amber_chat
         show screen apartment_amber_apartment_screen
-        $ renpy.pause(hard=True)
         jump exploration_loop
 
 # ==========================================================
@@ -49,6 +49,9 @@ label generic_amber_chat:
     Amber "Hey there, pervy. Need something?"
 
     MC "Just checking in."
-    Amber "Well, I'm fine. Door's working great, by the way."
+    if quest_fix_amber_door_complete:
+        Amber "Well, I'm fine. Door's working great, by the way."
+    else:
+        Amber "Well, I'm fine. Busy, but fine. Now shoo."
 
     return

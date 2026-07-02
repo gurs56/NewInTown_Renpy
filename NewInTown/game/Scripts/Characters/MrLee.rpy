@@ -8,7 +8,7 @@ define MrLee = Character("Mr. Lee", color="#7ab547", image="MrLee")
 # dropping its name in this list - no missing-image crashes.
 init python:
     for _m in ["neutral", "apologetic", "mad", "strict"]:
-        renpy.image("MrLee " + _m, im.Scale("images/Test_Characters/body1 1.png", 600, 900))
+        renpy.image("MrLee " + _m, im.Scale("images/Test_Characters/body1_1.png", 600, 900))
     del _m
 
 # ==========================================================
@@ -21,7 +21,7 @@ default mr_lee_has_event = False
 # INTERACTION ROUTING
 # ==========================================================
 label talk_mr_lee:
-    """Mr. Lee interaction handler"""
+    # Mr. Lee interaction handler
     hide screen grocery_store_interior_screen
 
     menu:
@@ -30,15 +30,17 @@ label talk_mr_lee:
         "Chat with Mr. Lee":
             call generic_mr_lee_chat
             show screen grocery_store_interior_screen
-            $ renpy.pause(hard=True)
             jump exploration_loop
 
         "Ask about door hinges" if quest_get_hinges and not quest_check_uncle_shop:
             jump A02_3_MR_LEE_STORE
 
+        # --- A03: job hunting (he says no) ---
+        "Ask about a job" if quest_find_job and not job_bean_spill:
+            jump A03_04_1_MR_LEE_JOB
+
         "Never mind":
             show screen grocery_store_interior_screen
-            $ renpy.pause(hard=True)
             jump exploration_loop
 
 # ==========================================================

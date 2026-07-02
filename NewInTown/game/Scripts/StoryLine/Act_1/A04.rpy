@@ -10,6 +10,8 @@
 # SCENE A04_01 - Hot Water Problem
 # ==========================================================
 label A04_01_HOT_WATER_PROBLEM:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_lobby with fade
@@ -70,12 +72,17 @@ label A04_01_HOT_WATER_PROBLEM:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_lobby_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A04_02 - Investigating the Leak
 # ==========================================================
 label A04_02_CHECK_LEAK:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_basement with fade
@@ -108,12 +115,17 @@ label A04_02_CHECK_LEAK:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_basement_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A04_03 - Showing Ms. Lopez the Magazines
 # ==========================================================
 label A04_03_MAGAZINES_LOPEZ:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_lobby with fade
@@ -186,12 +198,17 @@ label A04_03_MAGAZINES_LOPEZ:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_lobby_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A04_04 - Convincing Razor
 # ==========================================================
 label A04_04_RAZOR_BLACKMAIL:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in - exterior of Razor's door
     scene bg apartment_razor_apartment with fade
@@ -213,8 +230,9 @@ label A04_04_RAZOR_BLACKMAIL:
     
     MC bargaining "I see… Maybe you could teach me how to do it instead?"
     
-    MC enthusiastic ""
-    
+    # (pose change only - an empty say line would show a blank textbox)
+    # show MC enthusiastic
+
     Razor irritated "What makes you think that I'll teach you, ey?"
     
     MC mischievous "Well… I figured you would. Coz I found something that maybe belongs to you."
@@ -250,12 +268,17 @@ label A04_04_RAZOR_BLACKMAIL:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_razor_apartment_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A04_05 - Fixing the Leak with Razor
 # ==========================================================
 label A04_05_FIX_LEAK:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_basement with fade
@@ -298,13 +321,13 @@ label A04_05_FIX_LEAK:
     # Player choice menu
     menu:
         "Pry for more answers":
-            jump option1_pry
+            jump .pry
         
         "Play it safe":
-            jump option2_safe
+            jump .safe
 
 # Option 1: Pry for answers
-label option1_pry:
+label .pry:
     
     MC confused "What do you mean by that?"
     
@@ -312,10 +335,10 @@ label option1_pry:
     
     Razor "Just don't stick your nose where it doesn't belong if you don't want to get in trouble."
     
-    jump both_razor_options_continue
+    jump .merge
 
 # Option 2: Play it safe
-label option2_safe:
+label .safe:
     
     MC curious "I see… Got any advice for the newcomer in town?"
     
@@ -323,10 +346,10 @@ label option2_safe:
     
     Razor "After all, curiosity kills the cat."
     
-    jump both_razor_options_continue
+    jump .merge
 
 # Both options continue here
-label both_razor_options_continue:
+label .merge:
     
     MC thinking "(I knew it… Something is going around here.)"
     
@@ -359,7 +382,12 @@ label both_razor_options_continue:
     # Fade out
     scene black with fade
     
-    return
+    # Unlock the next event (A05: getting the apartment)
+    call setup_a05_event
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_basement_screen
+    jump exploration_loop
 
 # ==========================================================
 # END OF A04 SCENES

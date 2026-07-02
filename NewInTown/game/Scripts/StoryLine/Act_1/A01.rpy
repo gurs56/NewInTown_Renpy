@@ -277,10 +277,8 @@ label A01_meeting_lopez:
     # show MC blush
     MC "Ah… Thank you! I won't let you down. I promise."
 
-    # --- LOG UPDATE ---
-    # This updates the variables for your quest log system.
-    $ quest_fix_door = True
-    $ quest_get_job = True
+    # (The door-quest flags are set by A02 when Ms. Lopez formally
+    #  assigns the task - no extra flags are needed here.)
 
     "New Task Added: Fix Amber's Door"
     "New Task Added: Get a Job"

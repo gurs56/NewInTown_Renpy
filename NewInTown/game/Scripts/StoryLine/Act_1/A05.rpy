@@ -10,6 +10,8 @@
 # SCENE A05_01 - Eavesdropping on Ms. Lopez and Amber
 # ==========================================================
 label A05_01_EAVESDROP_LOBBY:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_lobby with fade
@@ -55,12 +57,17 @@ label A05_01_EAVESDROP_LOBBY:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_lobby_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A05_02 - Receiving the Apartment
 # ==========================================================
 label A05_02_NEW_APARTMENT:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_mc_apartment with fade
@@ -80,13 +87,13 @@ label A05_02_NEW_APARTMENT:
     # Player choice menu
     menu:
         "Appreciate the surprise":
-            jump option1_appreciate
+            jump .appreciate
         
         "Question why":
-            jump option2_question
+            jump .question
 
 # Option 1: Appreciate
-label option1_appreciate:
+label .appreciate:
     
     MC happy "Really!?"
     
@@ -96,10 +103,10 @@ label option1_appreciate:
     
     MsLopez "Consider it as a return of your mom's help before."
     
-    jump both_apartment_options_continue
+    jump .merge
 
 # Option 2: Question why
-label option2_question:
+label .question:
     
     MC confused "Wait, what?"
     
@@ -109,10 +116,10 @@ label option2_question:
     
     MsLopez "Consider it as a return of your mom's help before."
     
-    jump both_apartment_options_continue
+    jump .merge
 
 # Both options continue here
-label both_apartment_options_continue:
+label .merge:
     
     MsLopez explaining "And besides, I only covered half of it."
     
@@ -169,7 +176,10 @@ label both_apartment_options_continue:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_mc_apartment_screen
+    jump exploration_loop
 
 # ==========================================================
 # END OF A05 SCENES - END OF ACT 1 ARC A

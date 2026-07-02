@@ -12,7 +12,7 @@ init python:
         "stern", "wise", "calm", "celebrating", "confused", "curious",
         "guilty", "mocking", "sad",
     ]:
-        renpy.image("Uncle " + _m, im.Scale("images/Test_Characters/body1 4.png", 600, 900))
+        renpy.image("Uncle " + _m, im.Scale("images/Test_Characters/body1_4.png", 600, 900))
     del _m
 
 # ==========================================================
@@ -25,7 +25,7 @@ default uncle_has_event = False
 # INTERACTION ROUTING
 # ==========================================================
 label talk_uncle:
-    """Uncle interaction handler"""
+    # Uncle interaction handler
     hide screen apartment_alley_screen
 
     menu:
@@ -34,7 +34,6 @@ label talk_uncle:
         "Chat with Uncle":
             call generic_uncle_chat
             show screen apartment_alley_screen
-            $ renpy.pause(hard=True)
             jump exploration_loop
 
         "Ask about door hinges" if quest_check_uncle_shop and not has_hinges:
@@ -42,7 +41,6 @@ label talk_uncle:
 
         "Never mind":
             show screen apartment_alley_screen
-            $ renpy.pause(hard=True)
             jump exploration_loop
 
 # ==========================================================

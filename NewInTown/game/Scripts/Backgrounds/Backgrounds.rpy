@@ -40,3 +40,9 @@ image bg cafe_building = im.Scale("images/Test_Backgrounds/Cafe.png", 1920, 1080
 image bg cafe_interior = im.Scale("images/Test_Backgrounds/Interior1.png", 1920, 1080)
 image bg cafe_kitchen = im.Scale("images/Test_Backgrounds/Kitchen.png", 1920, 1080)
 image bg cafe_storage = im.Scale("images/Test_Backgrounds/storage.png", 1920, 1080)
+
+# --- BOXING GYM (no art yet) ---
+# Uses the Poster placeholder card until art exists. Drop the real
+# art at images/Posters/BG - Boxing_Gym.png (it swaps in automatically),
+# or replace this line with an im.Scale(...) like the ones above.
+image bg boxing_gym = Poster("BG - Boxing_Gym")

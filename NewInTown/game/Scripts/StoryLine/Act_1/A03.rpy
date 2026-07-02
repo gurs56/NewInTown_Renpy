@@ -10,6 +10,8 @@
 # SCENE A03_01 - Reporting to Ms. Lopez
 # ==========================================================
 label A03_01_REPORT_TO_LOPEZ:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
     scene bg apartment_lobby with fade
@@ -57,15 +59,20 @@ label A03_01_REPORT_TO_LOPEZ:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen apartment_lobby_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A03_04.1 - Mr. Lee's Store (Rejected)
 # ==========================================================
 label A03_04_1_MR_LEE_JOB:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Fade in
-    scene bg mr_lee_store with fade
+    scene bg grocery_store_interior with fade
     
     # Show Mr. Lee
     # show MrLee strict
@@ -87,12 +94,19 @@ label A03_04_1_MR_LEE_JOB:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen grocery_store_interior_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A03_04.2 - Boxing Gym (No Opening)
 # ==========================================================
 label A03_04_2_BOXING_GYM_JOB:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
+    # TODO: no Boxing Gym location exists yet, so nothing routes
+    # here. Add a gym to the mid-town map, then link this scene.
     
     # Fade in
     scene bg boxing_gym with fade
@@ -121,20 +135,25 @@ label A03_04_2_BOXING_GYM_JOB:
     # Fade out
     scene black with fade
     
-    return
+    # Back to free roam
+    $ in_story_scene = False
+    show screen mid_town_map_screen
+    jump exploration_loop
 
 # ==========================================================
 # SCENE A03_04.3 - Bean Spill Cafe (SUCCESS)
 # ==========================================================
 label A03_04_3_BEAN_SPILL_CAFE:
+    # Protect the cutscene - hides the HUD and character buttons
+    $ in_story_scene = True
     
     # Exterior of cafe
-    scene bg bean_spill_exterior with fade
+    scene bg cafe_building with fade
     
     "MC sees the 'Hiring' sign in the establishment's window. He enters Bean Cafe, hoping to secure a job there despite having no prior experience."
     
     # Interior of cafe
-    scene bg bean_spill_cafe with fade
+    scene bg cafe_interior with fade
     
     # Show Tanya at counter
     # show Tanya welcoming
@@ -164,7 +183,7 @@ label A03_04_3_BEAN_SPILL_CAFE:
     Tanya angry "LUCA!!!"
     
     # Luca offscreen
-    luca "WHAT!!!"
+    Luca "WHAT!!!"
     
     # Show Luca entering
     # show luca boastful
@@ -173,7 +192,7 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     Tanya composed "This gentleman wants to work here."
     
-    luca boastful "Of course he does. Everyone wants to work here. We're the best cafe around here!"
+    Luca boastful "Of course he does. Everyone wants to work here. We're the best cafe around here!"
     
     Tanya irritated "Sure…"
     
@@ -181,25 +200,25 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     Tanya "He looks promising…"
     
-    luca serious "Do you know how to make coffee?"
+    Luca serious "Do you know how to make coffee?"
     
     MC confident "Yes, that's easy. I drink coffee every day."
     
-    luca serious "What about working at a cash register?"
+    Luca serious "What about working at a cash register?"
     
     MC thinking "No, never before. But I'm willing to learn."
     
     MC "How hard could it be?"
     
-    luca unbothered "Not very hard…"
+    Luca unbothered "Not very hard…"
     
-    luca "You're hired."
+    Luca "You're hired."
     
     MC surprised "Wait, what? Really?"
     
-    luca unbothered "Yeah, sure. Start right away if you want."
+    Luca unbothered "Yeah, sure. Start right away if you want."
     
-    luca "If my dad calls, tell him I'm busy working."
+    Luca "If my dad calls, tell him I'm busy working."
     
     # hide luca
     
@@ -230,7 +249,7 @@ label A03_04_3_BEAN_SPILL_CAFE:
     Tanya "I mean… to the kitchen~"
     
     # Transition to kitchen
-    scene bg bean_spill_kitchen with fade
+    scene bg cafe_kitchen with fade
     
     "The scene transitions after Tanya showed MC around."
     
@@ -262,7 +281,12 @@ label A03_04_3_BEAN_SPILL_CAFE:
     # Fade out
     scene black with fade
     
-    return
+    # Unlock the next event (A04: the hot water problem)
+    call setup_a04_event
+    # Back to free roam
+    $ in_story_scene = False
+    show screen cafe_interior_screen
+    jump exploration_loop
 
 # ==========================================================
 # END OF A03 SCENES

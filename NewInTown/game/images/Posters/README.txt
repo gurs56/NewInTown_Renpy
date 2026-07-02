@@ -19,3 +19,8 @@ A00 - INTRO (Bus Terminal) needs these files:
     A00 - Old_Photo.png
     A00 - Bus_City.png
     A00 - Step_off.png
+
+-------------------------------------------------------------
+Placeholder BACKGROUNDS that also live here until real art:
+-------------------------------------------------------------
+    BG - Boxing_Gym.png   (used by A03's boxing gym scene)
