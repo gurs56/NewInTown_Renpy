@@ -10,7 +10,7 @@ experience assumed beyond the basics.
 |---|---|
 | `System/` | Engine-y stuff: game loop (`GameState.rpy`), time system (`TimeTracker.rpy`), HUD + reusable buttons (`GameButtons.rpy`), Ren'Py defaults (`options.rpy`, `gui.rpy`, `screens.rpy`) |
 | `StoryLine/` | Quest flags (`StoryFlags.rpy`) and the acts (`Act_1/A00.rpy` …) |
-| `Characters/` | One file per character: their `Character()`, mood images, presence flags, and `talk_*` menu |
+| `Characters/` | One file per character: their `Character()`, pose images, presence flags, and `talk_*` menu |
 | `Locations/` | Location screens (`MidTownLocations.rpy`) and who stands where (`CharacterLocation.rpy`) |
 | `Maps/` | World / mid-town map screens and the Map button's helper |
 | `Backgrounds/` | All `image bg …` declarations |
@@ -39,7 +39,7 @@ small screen in `MidTownLocations.rpy` (keep `tag location` / `modal True` /
 `zorder 100`), then add `use nav_button("To X", "x_screen", x, y)` lines
 to/from its neighbours. `tag location` handles the hiding automatically.
 
-**…a character:** copy a small file in `Characters/` (mood list + flags +
+**…a character:** copy a small file in `Characters/` (pose list + flags +
 `talk_*` label), then one `use character_button(...)` line in
 `CharacterLocation.rpy` for where they stand.
 
@@ -56,7 +56,7 @@ chain the next act with `call setup_aXX_event`.
 `images/Posters/A0X - Name.png` when it exists — a labeled placeholder
 shows until then.
 
-**…a character mood:** add one word to that character's mood list.
+**…a character pose:** add one word to that character's pose list.
 
 ## Names that matter
 

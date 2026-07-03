@@ -4,15 +4,35 @@ define MsLopez = Character("Ms. Lopez", color="#a64d79", image="MsLopez")
 # ==========================================================
 # EXPRESSIONS (placeholder)
 # ==========================================================
-# All moods share one placeholder sprite. Add a new mood by
-# dropping its name in this list - no missing-image crashes.
+# The CANONICAL POSES below are the official pose list for the
+# artist. These are the current pose names used by the scripts
 init python:
-    for _m in [
-        "neutral", "stressed", "idle", "stern", "warm", "curious",
-        "amused", "doubtful", "excited", "explaining", "happy",
-        "impressed", "irritated", "laughing", "sad", "shocked",
-        "smirk", "thinking", "angry", "convinced", "strict", "worried",
-    ]:
+    # ------------------------------------------------------
+    # CANONICAL POSES - the official pose list (what the
+    # artist will draw). This is the source of truth; add or
+    # remove poses here as art is planned.
+    # ------------------------------------------------------
+    MsLopez_poses = [
+        "idle", "explaining", "strict", "irritated", "angry", "thinking",
+        "smirk", "happy", "joyful", "worried", "sad", "shocked",
+        "horny", "excited",
+    ]
+
+    # ------------------------------------------------------
+    # LEGACY MOODS - older words still used by story scripts
+    # that AREN'T canonical poses yet. Kept working (they show
+    # the placeholder) so nothing crashes. To retire one:
+    # change the script to a canonical pose above, then
+    # delete the word here.
+    # ------------------------------------------------------
+    MsLopez_legacy_moods = [
+        "convinced", "curious", "doubtful", "impressed", "laughing", "neutral",
+        "stern", "stressed",
+    ]
+
+    # Every pose shares one placeholder sprite for now. When real
+    # art exists, replace this loop with proper per-pose images.
+    for _m in MsLopez_poses + MsLopez_legacy_moods:
         renpy.image("MsLopez " + _m, im.Scale("images/Test_Characters/body1_1.png", 600, 900))
     del _m
 

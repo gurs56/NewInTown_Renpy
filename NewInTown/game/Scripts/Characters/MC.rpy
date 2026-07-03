@@ -24,18 +24,36 @@ label set_player_name:
 # ==========================================================
 # EXPRESSIONS (placeholder)
 # ==========================================================
-# Every mood currently shares one placeholder sprite. To add a
-# new mood, just drop its name in this list - it will never crash
-# for a missing image and needs no extra lines.
+# The CANONICAL POSES below are the official pose list for the
+# artist. LEGACY MOODS are older words the scripts still use; they
+# stay working until the scripts are migrated to a canonical pose.
 init python:
-    for _m in [
-        "neutral", "confident", "confused", "nervous", "thinking",
-        "surprised", "determined", "shy", "curious", "panicking",
-        "polite", "happy", "apologetic", "bargaining", "blush",
-        "blushing", "celebrating", "disbelief", "disgusted",
-        "enthusiastic", "excited", "explaining", "flustered",
-        "hesitant", "idle", "innocent", "intrigued", "laughing",
-        "mischievous", "proud", "sad", "scared", "tired", "worried",
-    ]:
+    # ------------------------------------------------------
+    # CANONICAL POSES - the official pose list (what the
+    # artist will draw). This is the source of truth; add or
+    # remove poses here as art is planned.
+    # ------------------------------------------------------
+    MC_poses = [
+        "idle", "happy", "innocent", "laughing", "excited", "confident",
+        "sad", "thinking", "worried", "scared", "surprised", "blush",
+        "smug", "disgusted", "explaining", "bargaining",
+    ]
+
+    # ------------------------------------------------------
+    # LEGACY MOODS - older words still used by story scripts
+    # that AREN'T canonical poses yet. Kept working (they show
+    # the placeholder) so nothing crashes. To retire one:
+    # change the script to a canonical pose above, then
+    # delete the word here.
+    # ------------------------------------------------------
+    MC_legacy_moods = [
+        "apologetic", "blushing", "celebrating", "confused", "curious", "determined",
+        "disbelief", "enthusiastic", "flustered", "hesitant", "intrigued", "mischievous",
+        "neutral", "panicking", "polite", "proud", "shy", "tired",
+    ]
+
+    # Every pose shares one placeholder sprite for now. When real
+    # art exists, replace this loop with proper per-pose images.
+    for _m in MC_poses + MC_legacy_moods:
         renpy.image("MC " + _m, im.Scale("images/Test_Characters/body1_3.png", 600, 900))
     del _m

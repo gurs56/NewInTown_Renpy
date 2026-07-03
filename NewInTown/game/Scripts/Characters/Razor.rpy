@@ -4,14 +4,32 @@ define Razor = Character("Razor", color="#8b4513", image="Razor")
 # ==========================================================
 # EXPRESSIONS (placeholder)
 # ==========================================================
-# All moods share one placeholder sprite. Add a new mood by
-# dropping its name in this list - no missing-image crashes.
+# The CANONICAL POSES below are the official pose list for the
+# artist. These are the current pose names used by the scripts
 init python:
-    for _m in [
-        "neutral", "gruff", "defensive", "embarrassed", "serious",
-        "grumpy", "irritated", "shocked", "stern", "suspicious",
-        "thinking",
-    ]:
+    # ------------------------------------------------------
+    # CANONICAL POSES - the official pose list (what the
+    # artist will draw). This is the source of truth; add or
+    # remove poses here as art is planned.
+    # ------------------------------------------------------
+    Razor_poses = [
+        "idle", "suspicious", "shocked", "irritated", "thinking",
+    ]
+
+    # ------------------------------------------------------
+    # LEGACY MOODS - older words still used by story scripts
+    # that AREN'T canonical poses yet. Kept working (they show
+    # the placeholder) so nothing crashes. To retire one:
+    # change the script to a canonical pose above, then
+    # delete the word here.
+    # ------------------------------------------------------
+    Razor_legacy_moods = [
+        "grumpy", "serious", "stern",
+    ]
+
+    # Every pose shares one placeholder sprite for now. When real
+    # art exists, replace this loop with proper per-pose images.
+    for _m in Razor_poses + Razor_legacy_moods:
         renpy.image("Razor " + _m, im.Scale("images/Test_Characters/body1_3.png", 600, 900))
     del _m
 

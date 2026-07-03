@@ -4,14 +4,33 @@ define Amber = Character("Amber", color="#ff6b9d", image="Amber")
 # ==========================================================
 # EXPRESSIONS (placeholder)
 # ==========================================================
-# All moods share one placeholder sprite. Add a new mood by
-# dropping its name in this list - no missing-image crashes.
+# The CANONICAL POSES below are the official pose list for the
+# artist. These are the current pose names used by the scripts
 init python:
-    for _m in [
-        "neutral", "embarrassed", "playful", "teasing", "grateful",
-        "sassy", "irritated", "smirk", "concerned", "idle",
-        "laughing", "seductive", "underwear", "work_uniform",
-    ]:
+    # ------------------------------------------------------
+    # CANONICAL POSES - the official pose list (what the
+    # artist will draw). This is the source of truth; add or
+    # remove poses here as art is planned.
+    # ------------------------------------------------------
+    Amber_poses = [
+        "arms_crossed", "irritated", "seductive", "laughing", "concerned", "idle",
+        "seductive_wink",
+    ]
+
+    # ------------------------------------------------------
+    # LEGACY MOODS - older words still used by story scripts
+    # that AREN'T canonical poses yet. Kept working (they show
+    # the placeholder) so nothing crashes. To retire one:
+    # change the script to a canonical pose above, then
+    # delete the word here.
+    # ------------------------------------------------------
+    Amber_legacy_moods = [
+        "sassy", "smirk", "underwear", "work_uniform",
+    ]
+
+    # Every pose shares one placeholder sprite for now. When real
+    # art exists, replace this loop with proper per-pose images.
+    for _m in Amber_poses + Amber_legacy_moods:
         renpy.image("Amber " + _m, im.Scale("images/Test_Characters/body1_2.png", 600, 900))
     del _m
 
