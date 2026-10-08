@@ -11,9 +11,11 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     MrLee_poses = [
-        "idle", "mad",
+        "idle",         # 1 Idle (Strict)                       -
+        "mad",          # 2 Mad                                 -
     ]
 
     # ------------------------------------------------------
@@ -30,7 +32,7 @@ init python:
     # Every pose shares one placeholder sprite for now. When real
     # art exists, replace this loop with proper per-pose images.
     for _m in MrLee_poses + MrLee_legacy_moods:
-        renpy.image("MrLee " + _m, im.Scale("images/Test_Characters/body1_1.png", 600, 900))
+        renpy.image("MrLee " + _m, placeholder_sprite("images/Test_Characters/body1_1.png"))
     del _m
 
 # ==========================================================

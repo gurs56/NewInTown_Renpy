@@ -11,9 +11,14 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     Razor_poses = [
-        "idle", "suspicious", "shocked", "irritated", "thinking",
+        "idle",         # 1 Idle (Grumpy)                       Finished
+        "suspicious",   # 2 Suspicious                          Finished
+        "shocked",      # 3 Shocked (mad)                       Finished
+        "irritated",    # 4 Irritated                           Finished
+        "thinking",     # 5 Thinking                            Finished
     ]
 
     # ------------------------------------------------------
@@ -27,10 +32,29 @@ init python:
         "grumpy", "serious", "stern",
     ]
 
-    # Every pose shares one placeholder sprite for now. When real
-    # art exists, replace this loop with proper per-pose images.
+    # Poses with finished art (pose name -> art file).
+    Razor_pose_art = {
+        "idle": "images/Characters/Razor/NIT_CH_RAZOR_CASUAL_STAND_IDLE_FIN_V01.png",
+        "suspicious": "images/Characters/Razor/NIT_CH_RAZOR_CASUAL_STAND_SUSPICIOUS_FIN_V01.png",
+        "shocked": "images/Characters/Razor/NIT_CH_RAZOR_CASUAL_STAND_MAD_FIN_V01.png",
+        "irritated": "images/Characters/Razor/NIT_CH_RAZOR_CASUAL_STAND_IRRITATED_FIN_V01.png",
+        "thinking": "images/Characters/Razor/NIT_CH_RAZOR_CASUAL_STAND_THINKING_FIN_V01.png",
+    }
+
+    # Legacy words that are just aliases of a pose above with finished art.
+    Razor_legacy_art_alias = {
+        "grumpy": "idle",
+    }
+
+    # Every pose shares one placeholder sprite until real art exists;
+    # poses (and their legacy aliases) listed above use the real art.
     for _m in Razor_poses + Razor_legacy_moods:
-        renpy.image("Razor " + _m, im.Scale("images/Test_Characters/body1_3.png", 600, 900))
+        if _m in Razor_pose_art:
+            renpy.image("Razor " + _m, framed_sprite("Razor", Razor_pose_art[_m]))
+        elif _m in Razor_legacy_art_alias:
+            renpy.image("Razor " + _m, framed_sprite("Razor", Razor_pose_art[Razor_legacy_art_alias[_m]]))
+        else:
+            renpy.image("Razor " + _m, placeholder_sprite("images/Test_Characters/body1_3.png"))
     del _m
 
 # ==========================================================

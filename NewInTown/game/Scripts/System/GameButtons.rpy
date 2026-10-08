@@ -93,12 +93,16 @@ screen quest_button(label_text, target_label, x, y, size=150, text_size=24):
 # Shows name above, and a yellow "!" when they have an event.
 #   use character_button("Amber", "talk_amber", amber_has_event)
 # ----------------------------------------------------------
-screen character_button(char_name, talk_label, has_event=False, x=400, y=200, sprite="images/Test_Characters/body1_2.png"):
+screen character_button(char_name, talk_label, has_event=False, x=400, y=200, sprite="images/Test_Characters/body1_2.png", char=None):
+    # `char` is a key into CHAR_FRAME (Characters/SpriteFraming.rpy).
+    # When given, the button reuses that character's real framing so the
+    # figure matches how they look on stage. Characters still waiting on
+    # art pass no `char` and fall back to the flat placeholder scale.
     # Hidden during story scenes
     if not in_story_scene:
         imagebutton:
-            idle im.Scale(sprite, 200, 400)
-            hover im.Scale(sprite, 220, 440)
+            idle (button_sprite(char, sprite) if char else placeholder_sprite(sprite, BUTTON_H))
+            hover (button_sprite(char, sprite, BUTTON_H * 1.1) if char else placeholder_sprite(sprite, BUTTON_H * 1.1))
             action [Hide("location"), Jump(talk_label)]
             xpos x
             ypos y

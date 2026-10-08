@@ -1,289 +1,290 @@
 # ==========================================================
-# SCENE: A01 - Meeting Ms. Lopez
-# LOCATION: Apartment Lobby
+# ACT 1 - SCENE A01: Meeting Ms. Lopez
+# ==========================================================
+# LOCATION: Central District - Midtown - Apartment Building - Lobby
+# CAST: MC, Ms. Lopez, Uncle (Lenny Cho)
+# OBJECTIVE: Talk to Ms. Lopez
+# FLAG IN: Start Game
+#
+# Follows NewInTown_V5_01_A, poses per NAT_PoseList_v02. The pose
+# number from the screenplay is kept in the comment so this file can
+# be diffed against the script by eye.
+#
+# CHANGED IN V5: the old middle of this scene is gone. There used to
+# be a "how will you explain having no money" menu and a separate
+# "negotiate for the room" menu; V5 replaces the first with a
+# straight run of beats and the second with the mom's-name / ring
+# choice, which is now what triggers the reveal. Ms. Lopez, not MC,
+# is the one who says the name Jessica.
 # ==========================================================
 
 label A01_meeting_lopez:
 
     # --- SCENE START ---
-    
+
     # Start with black to clear previous scenes
     scene black with fade
 
     scene bg apartment_lobby
-    
-    with dissolve
-    # scene bg apartment_lobby_morning with dissolve
 
-    # [ART PLACEHOLDER] Show characters. 
-    # Since you are using "neutral" for testing, we just show them once here.
-    show MsLopez neutral at right
-    show Uncle neutral at left
-    # MC will enter later from the right; keep it hidden at scene start
+    with dissolve
+
+    # Show characters. stage_left/right frame them knees-up at a
+    # shared camera distance - see Characters/SpriteFraming.rpy.
+    show MsLopez idle at stage_left
+    show Uncle idle at stage_right
+    # MC walks in on the argument; keep him off stage until he does.
     hide MC
 
     # --- ARGUMENT SEQUENCE ---
 
-    # Script says: Ms. Lopez (Pose: Angry)
-    # When you have the art, uncomment the next line:
-    # show MsLopez angry
-    MsLopez "How many times did I tell you to pay rent on time?"
+    # Ms. Lopez, Pose 5: Angry - to Uncle
+    show MsLopez angry
+    MsLopez "How many times, Lenny? How many times did I tell you to pay rent on time?"
 
-    # Script says: Uncle (Pose: Sad)
-    # show Uncle sad
+    # Uncle, Pose 9: Sad - to Ms. Lopez
+    show Uncle sad
     Uncle "It's been hard these past few months, you know that."
 
-    # Script says: Ms. Lopez (Pose: Angry)
-    MsLopez "I don't care what you have to say! I'm running a business here, not a charity, Lenny. I already let you set up that junk shop outside for free. What more do you need?"
+    # Ms. Lopez, Pose 4: Irritated - to Lenny Cho
+    show MsLopez irritated
+    MsLopez "I'm trying to run a building here, not a charity."
+    MsLopez "I already let you set up that junk shop outside for free."
 
-    # Script says: Uncle (Pose: Explaining)
-    # show Uncle explaining
-    Uncle "Hey, it's a Pawn Shop, and we're not selling junk. You must know that one man's trash is another man's treasure."
+    # Uncle, Pose 2: Explaining - to Ms. Lopez
+    show Uncle explaining
+    Uncle "Hey, it's a Pawn Shop, and we're not selling junk."
+    Uncle "You must know that one man's trash is another man's treasure."
 
-    # MC Enters
-    # [ART PLACEHOLDER] Show MC (entering from the right)
-    show MC neutral at center with moveinright
-
-    # Script says: MC (Pose: Idle)
+    # MC enters the conversation
+    # MC, Pose 1: Idle
+    show MC idle at stage_center with moveinright
     MC "My mom used to say, 'Why throw something away when you can keep it?'"
 
-    # Script says: Uncle (Pose: Wise)
-    # show Uncle wise
-    Uncle "See, buddy gets it."
+    # Uncle, Pose 4: Wise - to Ms. Lopez
+    show Uncle wise
+    Uncle "See, Buddy gets it."
 
-    # Internal thought (in parentheses in your script usually means thought)
-    # Script says: Uncle (Pose: Confused)
-    # show Uncle confused
-    Uncle "(Umm, who is Buddy anyway?)"
+    # Uncle, Pose 7: Confused - to MC
+    show Uncle confused
+    Uncle "Umm, who is Buddy anyway?"
 
     # ==========================================================
-    # MENU 1: INTRODUCTIONS
+    # PLAYER CHOICE: INTRODUCTIONS
     # ==========================================================
-    
+
     menu:
         "How will you respond?"
 
         "Introduce yourself politely":
             # --- OPTION 1 ---
-            # Script says: MC (Pose: Polite)
-            # show MC polite
+            # MC, Pose 2: Happy
+            show MC happy
             MC "Hi, I'm [mc_name]. Nice to meet you."
 
-            # Script says: Uncle (Pose: Wise)
-            # show Uncle wise
-            Uncle "Oh, you must be new in town. I'm Lenny, but everyone just calls me Uncle."
+            # Uncle, Pose 4: Wise - to MC
+            show Uncle wise
+            Uncle "Oh, you must be new in town? I'm Lenny, but everyone just calls me Uncle."
 
-        "Apologies for intruding":
+        "Apologize for intruding":
             # --- OPTION 2 ---
-            # Script says: MC (Pose: Apologetic)
-            # show MC apologetic
-            MC "Sorry for meddling. I'm [mc_name]."
+            # MC, Pose 7: Sad - to Uncle
+            show MC sad
+            MC "Sorry for interrupting. I'm [mc_name]."
 
-            # Script says: Uncle (Calm)
-            # show Uncle calm
+            # Uncle, Pose 3: Laughing - to MC
+            show Uncle laughing
             Uncle "Oh, a shy kid. I'm Lenny, but everyone just calls me Uncle. Nice to meet you."
 
+            # Uncle, Pose 4: Wise
+            show Uncle wise
+
     # ==========================================================
-    # MERGE (Main Story Continues)
+    # BOTH OPTIONS CONTINUE
     # ==========================================================
 
-    # Script says: Uncle (Pose: Curious)
-    # show Uncle curious
+    # Uncle, Pose 7: Confused - to MC
+    show Uncle confused
     Uncle "You wouldn't happen to be looking for a slightly used microwave?"
 
-    # Script says: MC (Pose: Laughing)
-    # show MC laughing
+    # MC, Pose 4: Laughing - to Uncle
+    show MC laughing
     MC "Hahaha, sadly no. I am actually looking for a place to stay."
 
-    # Script says: Uncle (Pose: Happy)
-    # show Uncle happy
+    # Uncle, Pose 6: Happy - to MC
+    show Uncle happy
     Uncle "WELL, YOU'VE COME TO THE RIGHT PLACE!"
-    Uncle "You can stay with me for the low, low price of $200 a month."
+    Uncle "You can stay with me for the low, low price of …"
 
-    # Script says: Ms. Lopez (Pose: Angry)
-    # show MsLopez angry
+    # Ms. Lopez, Pose 5: Angry - to Uncle
+    show MsLopez angry
     MsLopez "LENNY!"
-    MsLopez "This is your last warning! Stop trying to use your back alley scams on handsome, young, naive boys."
+    MsLopez "This is your last warning! Stop trying to use your back alley scams on every naive boy who walks through the door."
 
-    # Script says: Uncle (Pose: Guilty-looking)
-    # show Uncle guilty
-    Uncle "Oh, I would never. How can you say that?"
+    # Uncle, Pose 8: Guilty - to Ms. Lopez
+    show Uncle guilty
+    Uncle "Oh, I would never."
+    Uncle "How can you say that?"
 
-    # Script says: Ms. Lopez (Pose: Idle)
-    # show MsLopez neutral
-    MsLopez "Don't listen to that old man. I'm the landlady of this place. You can stay here if you pay rent."
+    # Ms. Lopez, Pose 1: Idle - to MC
+    show MsLopez idle
+    MsLopez "Don't listen to that old man. I'm the landlady here."
+    MsLopez "You can stay here…"
+    MsLopez "… if you pay rent."
+
+    # --- THE MONEY PROBLEM ---
+
+    # MC, Pose 18: Scratch - back of the head
+    show MC scratch
+    MC "Well… the thing is, I don't have any money."
+    MC "But I can work for it. Anything that's broken, I can fix it."
+    MC "I'm good with my hands."
+
+    # Ms. Lopez, Pose 3: Strict - to herself
+    show MsLopez strict
+    MsLopez "Oh baby. I've heard that exact speech before."
+
+    # Ms. Lopez, Pose 4: Irritated - looking at Uncle
+    show MsLopez irritated
+    MsLopez "Every month, it would seem."
+
+    # Uncle, Pose 8: Guilty - to Ms. Lopez (avoids eye contact)
+    show Uncle guilty
+
+    # Ms. Lopez, Pose 10: Worried - to MC
+    show MsLopez worried
+    MsLopez "Take a look around. This place is falling apart."
+    MsLopez "Half the tenants are struggling to pay rent."
+    MsLopez "If you can't pay rent, then I can't give you a room."
+
+    # MC looks defeated. He turns to walk away - then stops, one last try.
+    show MC sad
 
     # ==========================================================
-    # MENU 2: MONEY SITUATION
+    # PLAYER CHOICE: ONE LAST TRY
     # ==========================================================
 
     menu:
-        "Tell her you don't have money":
+        "One last try…"
+
+        "Say your mom's name":
             # --- OPTION 1 ---
-            # Script says: MC (Pose: Scratching head/shy)
-            # show MC shy
-            MC "Well… the thing is, I don't have any money."
+            # MC, Pose 7: Sad - to Ms. Lopez
+            MC "Umm…"
+            MC "My mom's name was Jessica. She's the reason I came here."
 
-            # Script says: Ms. Lopez (Pose: Strict, Talking to self)
-            # show MsLopez strict
-            MsLopez "(Welp, you'd better get some if you want to stay here.)"
-            MsLopez "(No rent, No Stay.)"
-
-        "Tell her you came from Willow Creek":
+        "Show the ring":
             # --- OPTION 2 ---
-            # Script says: Mc (Pose: Scratching head/shy)
-            # show MC shy
-            MC "Well… I just used my last savings to get here, all the way from Willow Creek."
-
-            # Script says: Ms. Lopez (Pose: Curious -> Strict)
-            # show MsLopez curious
-            MsLopez "(Willow Creek? Right! I used to have a friend in Willow.)"
-            
-            # show MsLopez strict
-            MsLopez "Doesn't matter, No rent, No Stay."
+            # MC, Pose 7: Sad - to Ms. Lopez
+            MC "Umm…"
+            MC "This was my mom's ring."
 
     # ==========================================================
-    # MERGE: THE REVEAL
+    # BOTH OPTIONS CONTINUE: THE REVEAL
     # ==========================================================
 
-    # Script says: MC (Pose: innocent)
-    # show MC innocent
-    MC "I understand. Maybe you could help me with something else then? My mom sent me here, and I was hoping you would know someone named Ms. Lopez?"
+    # Ms. Lopez, Pose 12: Shocked - to MC
+    show MsLopez shocked
+    MsLopez "…"
+    MsLopez "Wait, that would mean you're…"
+    MsLopez "Jessica's boy?"
 
-    # Script says: Ms. Lopez (Pose: Shocked)
-    # show MsLopez shocked
-    MsLopez "Wait… Who was your mother?"
+    # MC, Pose 12: Blush - to Ms. Lopez (doesn't answer)
+    show MC blush
 
-    # Script says: MC (Pose: innocent)
-    MC "Jessia."
+    # Ms. Lopez, Pose 8: Happy - to MC
+    show MsLopez happy
+    MsLopez "Oh my God!!!"
+    MsLopez "JESSICA IS HERE!?!?!?"
+    MsLopez "MY BESTIE!!!"
 
-    # Script says: Ms. Lopez (Pose: Shocked)
-    MsLopez "Wait, that would mean you're.."
+    # MC, Pose 7: Sad - to Ms. Lopez (doesn't answer)
+    show MC sad
 
-    # --- SPECIAL EVENT: THE HUG ---
-    # [ART PLACEHOLDER] This is a "CG" scene. Usually we hide the sprites here.
-    # hide MC
-    # hide Uncle
-    # hide MsLopez
-    # scene cg_lopez_hug with dissolve
+    # Ms. Lopez, lopez_u_tears - to MC
+    show MsLopez tears
+    MsLopez "Where is she?"
+
+    # MC, Pose 19: Tears - to Ms. Lopez (doesn't answer)
+    show MC tears
+
+    # --- Ms. Lopez hugs MC, his face in her chest ---
+    scene UP_BoobFaceLopez_Sad with dissolve
 
     MsLopez "Oh, you poor baby…"
-    MsLopez "I'm so sorry. I wanted to come, but it had been so long. I didn't know what I would say."
+    MsLopez "I'm so sorry."
 
-    # Script says: Uncle (Pose: Confused)
-    # Note: Since the CG is on screen, Uncle might just be a voice.
-    Uncle "I feel like I'm missing some information here."
+    # Uncle, Pose 7: Confused - to Ms. Lopez
+    Uncle "… I feel like I'm missing something."
 
-    MC "My mother passed not too long ago."
+    # MC, Pose 7: Sad - to Lenny
+    MC "My mother is no longer with us."
 
-    # --- END SPECIAL EVENT ---
-    # [ART PLACEHOLDER] Restore the lobby background and sprites
-    # scene bg apartment_lobby_morning
-    # show MC neutral at center
-    # show MsLopez neutral at right
-    # show Uncle neutral at left
+    # Uncle, Pose 10: Shocked
+    Uncle "Ah, hell, kid."
 
-    # Script says: Uncle (Pose: Shocked/Sad)
-    # show Uncle sad
-    Uncle "Shit, kid, I'm sorry to hear that. Even though I never had a mom, I know losing one can be the hardest thing sometimes… If you need something, I'll be here in my pawnshop."
+    # Uncle, Pose 9: Sad
+    Uncle "I never had a mother myself, so I can't say I know it. But I know losing one's about the hardest thing there is…"
+    Uncle "If you need something…"
+    Uncle "… I'm out front."
 
-    # Narrator line
-    "Ms. Lopez lets [mc_name] go."
+    # --- Ms. Lopez lets MC go: restore the lobby ---
+    scene bg apartment_lobby with dissolve
+    show MsLopez sad at stage_left
+    show Uncle sad at stage_right
+    show MC sad at stage_center
 
-    # Script says: Ms. Lopez (Pose: Sad)
-    # show MsLopez sad
-    MsLopez "Your mother was a good friend of mine when I first came to this country. As much as I wanted to return the favor… I still cannot just give out free rent."
-    MsLopez "I'm barely making ends meet as is."
+    # Ms. Lopez, Pose 11: Sad - to MC
+    MsLopez "Baby, I loved your mom; she was my best friend."
+    MsLopez "But I still can not give away a room, as much as I really want to."
 
-    # ==========================================================
-    # MENU 3: NEGOTIATION
-    # ==========================================================
+    # MC, Pose 6: Confident - to Ms. Lopez
+    show MC confident
+    MC "Let me earn it. I know I can do it."
+    MC "You got a building falling apart and nobody to fix it. I got no money and only free time. Let me help around here."
 
-    menu:
-        "Offer help in exchange":
-            # --- OPTION 1 ---
-            # Script says: MC (Pose: Bargaining)
-            # show MC bargaining
-            MC "My mom taught me that nothing comes for free in life. Perhaps I can help you with something in exchange."
+    # Ms. Lopez, Pose 16: Admiring - to MC
+    show MsLopez admiring
+    MsLopez "Hmmm…"
+    MsLopez "You sound just like her."
 
-            # Script says: Ms. Lopez (Pose: Sad)
-            # show MsLopez sad
-            MsLopez "Oh, baby. I want to help you, but how can you help here?"
+    # Uncle, Pose 4: Wise - to Ms. Lopez
+    show Uncle wise
+    Uncle "Oh, c'mon now. Have some mercy on the poor boy."
 
-            # Script says: Uncle (Pose: Wise)
-            # show Uncle wise
-            Uncle "Maybe he can fix things around here, like Amber's broken door? He could be a handyman or an errand boy, you know."
+    # Ms. Lopez, Pose 7: Smirk - to MC
+    show MsLopez smirk
+    MsLopez "Alright, you got yourself a deal."
+    MsLopez "If you can help out around here, I will get you a room."
 
-        "Don't push further":
-            # --- OPTION 2 ---
-            # Script says: MC (Pose: Sad)
-            # show MC sad
-            MC "I understand… I guess I really had to figure things out on my own now…"
-
-            # Script says: Uncle (Pose: Wise)
-            # show Uncle wise
-            Uncle "Oh, c'mon now. Have some mercy on this poor little boy. He can be a handyman or an errand boy, you know? Help fix Amber's broken door or something."
-
-    # ==========================================================
-    # MERGE: AGREEMENT
-    # ==========================================================
-
-    # Script says: Ms. Lopez (Pose: Irritated)
-    # show MsLopez irritated
-    MsLopez "You know, I can't hire someone to fix those until you pay your rent."
-
-    # Script says: MC (Pose: Bargaining)
-    # show MC bargaining
-    MC "I can fix those things for free. Well, not actually free, but in exchange for a place to stay."
-
-    # Script says: Ms. Lopez (Pose: Worried)
-    # show MsLopez worried
-    MsLopez "Baby, repairing stuff is no small task. You could further ruin something that needs to be fixed. I learned that from experience."
-
-    # Script says: MC (Pose: Determined -> Proud -> Sad)
-    # show MC determined
-    MC "Back then, mom could never afford to hire a repairman whenever something broke at our place."
-    MC "That's why we did things on our own, and I think I've gotten good at fixing broken things."
-    
-    # show MC proud
-    # (No dialogue change here, just pose change in theory)
-    
-    # show MC sad
-    MC "I know I'm asking for a lot, but all I want is a chance."
-
-    # Script says: Uncle (Pose: Mocking)
-    # show Uncle mocking
-    Uncle "Come on, the kid just wants to help. What's the worst he can do, break it more? HAHAHA"
-
-    # Script says: Ms. Lopez (Pose: Sad -> Convinced)
-    # show MsLopez sad
-    MsLopez "You know what… your mom was the first person to help me when I first came here. I could never forgive myself if I didn't do the same. Maybe that's the reason why she sent you to me."
-
-    # show MsLopez convinced
-    MsLopez "Ok, if you can help me with some things around here, you can have a room."
-
-    # Script says: MC & Uncle "YEY!!" (Simultaneously)
-    # show MC celebrating
-    # show Uncle celebrating
+    # --- UP_CelebrateMC / UP_CelebrateUNC: both celebrate at once ---
+    scene UP_CelebrateMC with dissolve
     MC "YEY!!"
     Uncle "YEY!!"
 
-    # Script says: Ms. Lopez (Pose: Stern)
-    # show MsLopez stern
-    MsLopez "Don't celebrate just yet."
-    MsLopez "Just know that you still have to find a job and pay rent soon, just like everyone else. Don't think you're special just because you're cute."
+    # --- back to the lobby ---
+    scene bg apartment_lobby with dissolve
+    show MsLopez strict at stage_left
+    show Uncle idle at stage_right
+    show MC idle at stage_center
 
-    # Script says: MC (Pose: Blush)
-    # show MC blush
+    # Ms. Lopez, Pose 3: Strict - to MC
+    MsLopez "Don't celebrate just yet."
+    MsLopez "Just know that you still have to find a job and pay rent, just like everyone else."
+    MsLopez "Don't think you're special just because you're cute."
+
+    # MC, Pose 12: Blush - to Ms. Lopez
+    show MC blush
     MC "Ah… Thank you! I won't let you down. I promise."
 
     # (The door-quest flags are set by A02 when Ms. Lopez formally
     #  assigns the task - no extra flags are needed here.)
 
+    # LOG UPDATE
     "New Task Added: Fix Amber's Door"
     "New Task Added: Get a Job"
 
     # --- SCENE END ---
     scene black with fade
-    
+
     return

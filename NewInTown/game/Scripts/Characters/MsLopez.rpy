@@ -11,11 +11,31 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     MsLopez_poses = [
-        "idle", "explaining", "strict", "irritated", "angry", "thinking",
-        "smirk", "happy", "joyful", "worried", "sad", "shocked",
-        "horny", "excited",
+        "idle",         #  1 Idle (Neutral)                     Finished
+        "explaining",   #  2 Explaining                         -
+        "strict",       #  3 Strict (Stern)                     Inked
+        "irritated",    #  4 Irritated (Eyebrow Raised)         Finished
+        "angry",        #  5 Angry                              Finished
+        "thinking",     #  6 Thinking (Curious/Doubtful)        Inked
+        "smirk",        #  7 Smirk (Impressed/Sassy)            -
+        "happy",        #  8 Happy (Standard Smile)             Inked
+        "joyful",       #  9 Joyful (Laughing)                  Finished
+        "worried",      # 10 Worried (Stressed/Nervous)         NotStarted
+        "sad",          # 11 Sad                                Finished
+        "shocked",      # 12 Shocked                            Revision
+        "horny",        # 13 Horny                              Inked
+        "excited",      # 14 Excited                            -
+        "guilty",       # 15 Guilty                             -
+        "admiring",     # 16 Admiring                           -
+
+        # Scene-specific on the pose sheet, but spoken through
+        # mid-conversation, so it has to be a SPRITE - a full-screen
+        # unique-pose card would wipe the lobby out from under the
+        # dialogue. Artist id: lopez_u_tears.
+        "tears",        #    A01: sad news about her friend     -
     ]
 
     # ------------------------------------------------------
@@ -30,11 +50,67 @@ init python:
         "stern", "stressed",
     ]
 
-    # Every pose shares one placeholder sprite for now. When real
-    # art exists, replace this loop with proper per-pose images.
+    # Poses with finished art (pose name -> art file).
+    # Finished art. File names follow the artist's pose-sheet names.
+    MsLopez_pose_art = {
+        "idle": "images/Characters/Ms.Lopez/NIT_CH_LOPEZ_DEFAULT_idle.png",
+        "irritated": "images/Characters/Ms.Lopez/NIT_CH_LOPEZ_DEFAULT_Irritated.png",
+        "angry": "images/Characters/Ms.Lopez/NIT_CH_LOPEZ_DEFAULT_angry.png",
+        "joyful": "images/Characters/Ms.Lopez/NIT_CH_LOPEZ_DEFAULT_joyful.png",
+        "sad": "images/Characters/Ms.Lopez/NIT_CH_LOPEZ_DEFAULT_SAD.png",
+        "shocked": "images/Characters/Ms.Lopez/NIT_CH_LOPEZ_DEFAULT_Shocked.png",
+    }
+
+    # Legacy words that are just aliases of a pose above with finished art.
+    # Sketch stand-ins, for poses the artist has roughed out but not
+    # finished. "happy" is filled by the Blush rough - the closest
+    # warm expression drawn so far; swap it out when a real Happy
+    # (pose 8, Standard Smile) is inked. Much better than the grey placeholder body, and they
+    # read as "not final yet" on sight.
+    # These are the CLEANED copies in SK/ - the raw scans have the
+    # pose name handwritten beside her head, which would otherwise
+    # show up on screen. They sit on a square 2048 canvas at a
+    # different zoom, hence the separate "MsLopez_SK" camera row.
+    MsLopez_sketch_art = {
+        "strict":   "images/Characters/Ms.Lopez/SK/NAT_CH_MSLOPEZ_Sturn_SK_v01.png",
+        "happy":    "images/Characters/Ms.Lopez/SK/NAT_CH_MSLOPEZ_Blush_SK_v01.png",
+        "thinking": "images/Characters/Ms.Lopez/SK/NAT_CH_MSLOPEZ_Wonder_SK_v01.png",
+        "worried":  "images/Characters/Ms.Lopez/SK/NAT_CH_MSLOPEZ_Stress_SK_v01.png",
+        "horny":    "images/Characters/Ms.Lopez/SK/NAT_CH_MSLOPEZ_Horny_SK_v01.png",
+    }
+
+    # What a pose with no art of its own falls back to. Her finished
+    # idle reads far better mid-scene than the grey placeholder body,
+    # which used to appear for smirk, explaining, happy and excited.
+    MsLopez_default_art = MsLopez_pose_art["idle"]
+
+    # Legacy words that are just another name for a pose that has art.
+    MsLopez_legacy_art_alias = {
+        "neutral": "idle",
+        "laughing": "joyful",
+        "stressed": "worried",
+        "stern": "strict",
+        "curious": "thinking",
+        "doubtful": "thinking",
+    }
+
+    def _mslopez_sprite(pose):
+        """Best art available for a pose: finished, else sketch, else None."""
+        pose = MsLopez_legacy_art_alias.get(pose, pose)
+        if pose in MsLopez_pose_art:
+            return framed_sprite("MsLopez", MsLopez_pose_art[pose])
+        if pose in MsLopez_sketch_art:
+            return framed_sprite("MsLopez_SK", MsLopez_sketch_art[pose])
+        return None
+
+    # Anything with neither finished nor sketch art draws her idle,
+    # so no pose name can crash a scene or drop a grey body into one.
     for _m in MsLopez_poses + MsLopez_legacy_moods:
-        renpy.image("MsLopez " + _m, im.Scale("images/Test_Characters/body1_1.png", 600, 900))
-    del _m
+        _img = _mslopez_sprite(_m)
+        if _img is None:
+            _img = framed_sprite("MsLopez", MsLopez_default_art)
+        renpy.image("MsLopez " + _m, _img)
+    del _m, _img
 
 # ==========================================================
 # FLAGS (presence + event)

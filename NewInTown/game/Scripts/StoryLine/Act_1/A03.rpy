@@ -21,37 +21,39 @@ label A03_01_REPORT_TO_LOPEZ:
     
     "MC gets back to the main lobby of the apartment building, reporting to Ms. Lopez."
     
-    MsLopez curious "Ah, there you are, MC. So, how's the door fixing going?"
+    MsLopez thinking "Ah, there you are, MC. So, how's the door fixing going?"
     
-    MC proud "Completed successfully! Ms. Amber was happy with my work."
+    MC confident "Completed successfully! Ms. Amber was happy with my work."
     
-    MsLopez stern "But you know, fixing the door won't be enough to keep you here."
+    MsLopez strict "Thank you for fixing the door, but remember, no job, no roof. You want to stay? You've got to earn it."
     
     MsLopez "Remember, no job, no roof. You want to stay? You've got to earn it."
     
-    MC polite "I understand…"
+    MC idle "I understand…"
     
     MC "Umm, but do you know anywhere that's hiring?"
     
-    MC shy "The truth is… I never really had a proper job in my life. Aside from fixing stuff, I had no real work experience."
+    MC blush "The truth is… I never really had a proper job in my life. Aside from fixing stuff, I had no real work experience."
     
     MsLopez shocked "Wait, not even an after-school gig?"
     
     MsLopez "How will you find a job with no experience at all?"
     
-    MC determined "Well… How does anyone get a job?"
+    MC confident "Well… How does anyone get a job?"
     
     MC "Hard work and determination!"
     
     MC "And maybe a recommendation will surely help."
     
-    MsLopez impressed "At least you have a good attitude about it…"
+    MsLopez smirk "At least you have a good attitude about it…"
     
-    MsLopez idle "Alright… I know a few places that might take you in, but you will have to go look around."
+    MsLopez "Alright… I know a few places that might take you in, but you will have to go look around."
+    
+    MsLopez idle "There are a lot of work opportunities around the town. And since you have some spare time, go and look for any job out there while I talk to some people I know."
     
     MsLopez "There are a lot of work opportunities around the town. And since you have some spare time, go and look for any job out there while I talk to some people I know."
     
-    MC determined "Thank you, I won't let you down."
+    MC confident "Thank you, I won't let you down."
     
     # Set quest flag
     $ quest_find_job = True
@@ -79,9 +81,9 @@ label A03_04_1_MR_LEE_JOB:
     
     "MC goes to Mr. Lee's convenience store to ask for a job."
     
-    MrLee strict "You again. What you want?"
+    MrLee idle "You again. What you want?"
     
-    MC polite "Good afternoon, sir. I'm just wondering if you need a store clerk here."
+    MC idle "Good afternoon, sir. I'm just wondering if you need a store clerk here."
     
     MrLee mad "No, no. I don't need help. If not buying something, get out."
     
@@ -118,17 +120,17 @@ label A03_04_2_BOXING_GYM_JOB:
     
     CoachDeShawn welcoming "What do we have here… A new blood in the gym!"
     
-    CoachDeShawn confident "Ready to get some gains, youngblood?"
+    CoachDeShawn idle "Ready to get some gains, youngblood?"
     
-    MC polite "I'm actually looking for a job… Maybe you need a cleaner here or something?"
+    MC idle "I'm actually looking for a job… Maybe you need a cleaner here or something?"
     
-    CoachDeShawn surprised "Oh, really?"
+    CoachDeShawn idle "Oh, really?"
     
     CoachDeShawn idle "Too bad for you. We just hired a janitor last week. Come back again when there's an opening."
     
     MC sad "Bumper…"
     
-    MC polite "Well, let me know if there will be any staff hiring here, thanks!"
+    MC idle "Well, let me know if there will be any staff hiring here, thanks!"
     
     "MC leaves the area."
     
@@ -160,11 +162,11 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     "MC approaches Tanya at the counter."
     
-    Tanya welcoming "Good Morning, Welcome to the Bean Spill!"
+    Tanya greeting "Good Morning, Welcome to the Bean Spill!"
     
-    Tanya blushing "Wha—what can I brew for you today?"
+    Tanya blush "Wha—what can I brew for you today?"
     
-    MC polite "Hi. I saw the sign on the window, and I was hoping to apply for a job."
+    MC idle "Hi. I saw the sign on the window, and I was hoping to apply for a job."
     
     Tanya intrigued "Oh? You want to work here, huh…? Do you have any coffee experience? Any serving experience would be recommended."
     
@@ -190,11 +192,11 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     "Luca comes out of the office, playing video games."
     
-    Tanya composed "This gentleman wants to work here."
+    Tanya idle "This gentleman wants to work here."
     
     Luca boastful "Of course he does. Everyone wants to work here. We're the best cafe around here!"
     
-    Tanya irritated "Sure…"
+    Tanya annoyed "Sure…"
     
     Tanya seductive "Maybe you should interview him."
     
@@ -224,15 +226,15 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     "Luca then leaves the premises, heading back to his office."
     
-    MC disbelief "That seemed easy…"
+    MC surprised "That seemed easy…"
     
     Tanya annoyed "Luca's dad put him in charge of this place, but he doesn't care too much."
     
-    MC curious "So… who's gonna train me?"
+    MC thinking "So… who's gonna train me?"
     
     Tanya seductive "I guess… I will~"
     
-    MC apologetic "Oh… I'm so sorry, didn't mean to give you extra work today."
+    MC sad "Oh… I'm so sorry, didn't mean to give you extra work today."
     
     Tanya laughing "Hahaha. No worries. I actually don't mind~"
     
@@ -240,7 +242,7 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     Tanya seductive "Buuut… I think things will be interesting this time, especially with you~"
     
-    MC blushing "I—I hope so, too."
+    MC blush "I—I hope so, too."
     
     # Unique pose: Tanya turns around, MC stares
     
@@ -253,7 +255,7 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     "The scene transitions after Tanya showed MC around."
     
-    Tanya composed "So, that's pretty much it."
+    Tanya idle "So, that's pretty much it."
     
     Tanya explaining "I guess your task will be cleaning duties here at first. But don't worry, I'll show you how we create coffee here during our free time."
     
@@ -263,9 +265,9 @@ label A03_04_3_BEAN_SPILL_CAFE:
     
     MC "(I understood zero of what she just said. I was busy staring somewhere else…)"
     
-    Tanya composed "Ah, MC. Is everything clear?"
+    Tanya idle "Ah, MC. Is everything clear?"
     
-    MC flustered "Ah, yes! Everything is clear. Hehe…"
+    MC blush "Ah, yes! Everything is clear. Hehe…"
     
     Tanya happy "Great! I'll schedule you for an afternoon shift tomorrow. You can go home for now."
     

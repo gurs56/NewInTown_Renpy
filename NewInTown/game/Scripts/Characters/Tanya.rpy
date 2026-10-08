@@ -11,10 +11,20 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     Tanya_poses = [
-        "idle", "happy", "greeting", "seductive", "annoyed", "angry",
-        "explaining", "calling_out", "laughing", "blush", "intrigued",
+        "idle",         #  1 Idle (Composed/Neutral)            Rendering
+        "happy",        #  2 Happy                              NotStarted
+        "greeting",     #  3 Greeting customer, warm smile      -
+        "seductive",    #  4 Seductive (Smirk/Impressed)        -
+        "annoyed",      #  5 Annoyed (Irritated/Eye Roll)       NotStarted
+        "angry",        #  6 Angry                              NotStarted
+        "explaining",   #  7 Explaining (Talking/Gesturing)     -
+        "calling_out",  #  8 Calling out                        NotStarted
+        "laughing",     #  9 Laughing (Joyful)                  -
+        "blush",        # 10 Blush (Shy/Embarrassed)            -
+        "intrigued",    # 11 Intrigued (Curious/Thinking)       -
     ]
 
     # ------------------------------------------------------
@@ -31,7 +41,7 @@ init python:
     # Every pose shares one placeholder sprite for now. When real
     # art exists, replace this loop with proper per-pose images.
     for _m in Tanya_poses + Tanya_legacy_moods:
-        renpy.image("Tanya " + _m, im.Scale("images/Test_Characters/body1_2.png", 600, 900))
+        renpy.image("Tanya " + _m, placeholder_sprite("images/Test_Characters/body1_2.png"))
     del _m
 
 # ==========================================================

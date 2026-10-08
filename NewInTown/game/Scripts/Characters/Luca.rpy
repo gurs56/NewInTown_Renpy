@@ -11,13 +11,17 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     Luca_poses = [
-        "idle", "boastful", "serious", "unbothered",
+        "idle",         # 1 Idle (Playing Switch)               Finished
+        "boastful",     # 2 Boastful                            Sketch
+        "serious",      # 3 Serious                             Sketch
+        "unbothered",   # 4 Unbothered (doesn't care)           Sketch
     ]
 
     # Every pose shares one placeholder sprite for now. When real
     # art exists, replace this loop with proper per-pose images.
     for _m in Luca_poses:
-        renpy.image("Luca " + _m, im.Scale("images/Test_Characters/body1_4.png", 600, 900))
+        renpy.image("Luca " + _m, placeholder_sprite("images/Test_Characters/body1_4.png"))
     del _m

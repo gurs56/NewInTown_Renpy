@@ -11,10 +11,17 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     Amber_poses = [
-        "arms_crossed", "irritated", "seductive", "laughing", "concerned", "idle",
-        "seductive_wink",
+        "arms_crossed",    # 1 Arms crossed, Sassy              -
+        "irritated",       # 2 Irritated (one arm on hips)      Inked
+        "seductive",       # 3 Seductive (smirk/teasing)        Inked
+        "laughing",        # 4 Laughing                         Inked
+        "concerned",       # 5 Concerned                        -
+        "idle",            # 6 Idle (Sassy)                     NotStarted
+        "seductive_wink",  # 7 Seductive Wink (teasing)         NotStarted
+        "smiling",         # 8 Smiling                          Sketch
     ]
 
     # ------------------------------------------------------
@@ -28,11 +35,55 @@ init python:
         "sassy", "smirk", "underwear", "work_uniform",
     ]
 
-    # Every pose shares one placeholder sprite for now. When real
-    # art exists, replace this loop with proper per-pose images.
+    # ------------------------------------------------------
+    # ART. The clothed idle is the only FINISHED sprite, and it
+    # is what any pose without its own art falls back to - so
+    # Amber always looks right, she just may not change
+    # expression on that line.
+    #
+    # The NAT_CH_AMBER_*_SK files are the artist's pencil roughs.
+    # They are wired as stand-ins so her expression actually
+    # changes with the writing; a rough that matches the line
+    # reads better than a finished sprite that ignores it. To
+    # go back to "finished sprite everywhere", empty
+    # Amber_sketch_art below - nothing else needs touching.
+    #
+    # The raw scans have the pose name handwritten beside her
+    # head, so the wired copies are the CLEANED ones in SK/
+    # (see the sketch note in SpriteFraming.rpy). They are drawn
+    # on a square 2048 canvas at their own zoom, hence the
+    # separate "Amber_SK" camera row.
+    #
+    # Not wired, because no canonical pose matches them yet:
+    #   Shy, Thinking
+    # ------------------------------------------------------
+    Amber_default_art = "images/Characters/Amber/NIT_CH_AMBER_CLOTHED_IDLE_v01.png"
+
+    # Finished, inked art. Add a pose here and it beats the sketch.
+    Amber_pose_art = {
+        # "irritated": "images/Characters/Amber/...",   <- inked art
+    }
+
+    Amber_sketch_art = {
+        "irritated":    "images/Characters/Amber/SK/NAT_CH_AMBER_Irritated_SK_v01.png",
+        "laughing":     "images/Characters/Amber/SK/NAT_CH_AMBER_Laughing_SK_v01.png",
+        "smiling":      "images/Characters/Amber/SK/NAT_CH_AMBER_Smiling_SK_v01.png",
+        "seductive":    "images/Characters/Amber/SK/NAT_CH_AMBER_Horny_SK_v01.png",
+        "arms_crossed": "images/Characters/Amber/SK/NAT_CH_AMBER_Umimpressed_SK_v01.png",
+        "concerned":    "images/Characters/Amber/SK/NAT_CH_AMBER_Surprised_SK_v01.png",
+        "sassy":        "images/Characters/Amber/SK/NAT_CH_AMBER_Eyeroll_SK_v01.png",
+        "smirk":        "images/Characters/Amber/SK/NAT_CH_AMBER_Horny_SK_v01.png",
+    }
+
     for _m in Amber_poses + Amber_legacy_moods:
-        renpy.image("Amber " + _m, im.Scale("images/Test_Characters/body1_2.png", 600, 900))
-    del _m
+        if _m in Amber_pose_art:
+            _img = framed_sprite("Amber", Amber_pose_art[_m])
+        elif _m in Amber_sketch_art:
+            _img = framed_sprite("Amber_SK", Amber_sketch_art[_m])
+        else:
+            _img = framed_sprite("Amber", Amber_default_art)
+        renpy.image("Amber " + _m, _img)
+    del _m, _img
 
 # ==========================================================
 # FLAGS (presence + event)

@@ -22,7 +22,7 @@ label A05_01_EAVESDROP_LOBBY:
     
     "MC went back to the front counter lobby to report progress. MC then finds Ms. Lopez and Amber talking about him. The player eavesdrops and will soon be spotted."
     
-    Amber sassy "So, what's with this new handyman of yours?"
+    Amber arms_crossed "So, what's with this new handyman of yours?"
     
     MsLopez explaining "He's the son of an old friend."
     
@@ -40,7 +40,7 @@ label A05_01_EAVESDROP_LOBBY:
     
     # Unique pose: Both look at MC entering
     
-    MC flustered "Oh, no-no."
+    MC blush "Oh, no-no."
     
     MC "I—I didn't mean to eavesdrop; I was just looking for Ms. Lopez."
     
@@ -108,7 +108,7 @@ label .appreciate:
 # Option 2: Question why
 label .question:
     
-    MC confused "Wait, what?"
+    MC thinking "Wait, what?"
     
     MC "Why?"
     
@@ -125,17 +125,17 @@ label .merge:
     
     MsLopez "Ms. Amber over here covered the other half~"
     
-    Amber sassy "Don't get the wrong impression, pervy."
+    Amber arms_crossed "Don't get the wrong impression, pervy."
     
     Amber "You are placed here near me so you can help me when I need it."
     
-    MC shy "I see… I'll keep that in mind, hehe…"
+    MC blush "I see… I'll keep that in mind, hehe…"
     
     MsLopez explaining "Also, don't forget. We are only covering the rent for this month."
     
     MsLopez "You are on your own after that."
     
-    MC determined "I understand. I already landed a gig in the cafe nearby."
+    MC confident "I understand. I already landed a gig in the cafe nearby."
     
     MC "I'll make sure to pay on time."
     
@@ -152,7 +152,7 @@ label .merge:
     
     MC "Finally… My efforts did not fail me."
     
-    MC determined "I should settle in first."
+    MC confident "I should settle in first."
     
     # Transition: unpacking scene
     scene black with fade
@@ -161,11 +161,11 @@ label .merge:
     
     scene bg apartment_mc_apartment with fade
     
-    MC tired "Wooooh…"
+    MC idle "Wooooh…"
     
     MC "That was exhausting."
     
-    MC proud "But at least I finally secured a place to sleep. Tomorrow is the start of a new beginning."
+    MC confident "But at least I finally secured a place to sleep. Tomorrow is the start of a new beginning."
     
     # Set quest flags
     $ quest_follow_lopez_apartment = False

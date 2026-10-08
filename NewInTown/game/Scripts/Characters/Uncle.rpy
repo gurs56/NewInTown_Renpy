@@ -11,10 +11,19 @@ init python:
     # CANONICAL POSES - the official pose list (what the
     # artist will draw). This is the source of truth; add or
     # remove poses here as art is planned.
+    # Mirrors the pose sheet: # / pose (aliases) / art status.
     # ------------------------------------------------------
     Uncle_poses = [
-        "idle", "explaining", "laughing", "wise", "celebrating", "happy",
-        "confused", "guilty", "sad", "shocked",
+        "idle",         #  1 Idle                               Finished
+        "explaining",   #  2 Explaining (Talking/Lecturing)     Finished
+        "laughing",     #  3 Laughing (Mocking)                 Finished
+        "wise",         #  4 Wise                               Finished
+        "celebrating",  #  5 Celebrating (Excited)              HOLD
+        "happy",        #  6 Happy (Standard Smile)             Inked
+        "confused",     #  7 Confused (Curious/Thinking)        Finished
+        "guilty",       #  8 Guilty (Defensive/Apologetic)      Inked
+        "sad",          #  9 Sad                                Finished
+        "shocked",      # 10 Shocked (Surprised/Awkward)        -
     ]
 
     # ------------------------------------------------------
@@ -28,10 +37,38 @@ init python:
         "calm", "curious", "mocking", "neutral", "stern",
     ]
 
-    # Every pose shares one placeholder sprite for now. When real
-    # art exists, replace this loop with proper per-pose images.
+    # Poses with finished art (pose name -> art file).
+    Uncle_pose_art = {
+        "idle": "images/Characters/Uncle/NIT_CH_UNCLE_CASUAL_STAND_IDLE_FIN_V01.png",
+        "explaining": "images/Characters/Uncle/NIT_CH_UNCLE_CASUAL_STAND_EXPLAINING_FIN_V01.png",
+        "laughing": "images/Characters/Uncle/NIT_CH_UNCLE_CASUAL_STAND_LAUGH_FIN_V01.png",
+        "wise": "images/Characters/Uncle/NIT_CH_UNCLE_CASUAL_STAND_WISE_FIN_V01.png",
+        "confused": "images/Characters/Uncle/NIT_CH_UNCLE_CASUAL_STAND_CONFUSED_FIN_V01.png",
+        "sad": "images/Characters/Uncle/NIT_CH_UNCLE_CASUAL_STAND_SAD_FIN_V01.png",
+    }
+
+    # What a pose with no art of its own falls back to. His finished
+    # idle reads far better mid-scene than the grey placeholder body -
+    # A01 alone asks for happy, guilty and shocked, none of them drawn.
+    Uncle_default_art = Uncle_pose_art["idle"]
+
+    # Legacy words that are just aliases of a pose above with finished art.
+    # (mocking/curious come straight from the pose sheet's own aliases.)
+    Uncle_legacy_art_alias = {
+        "neutral": "idle",
+        "mocking": "laughing",
+        "curious": "confused",
+    }
+
+    # Poses (and their legacy aliases) listed above use their own art;
+    # everything else draws his idle until that pose is drawn.
     for _m in Uncle_poses + Uncle_legacy_moods:
-        renpy.image("Uncle " + _m, im.Scale("images/Test_Characters/body1_4.png", 600, 900))
+        if _m in Uncle_pose_art:
+            renpy.image("Uncle " + _m, framed_sprite("Uncle", Uncle_pose_art[_m]))
+        elif _m in Uncle_legacy_art_alias:
+            renpy.image("Uncle " + _m, framed_sprite("Uncle", Uncle_pose_art[Uncle_legacy_art_alias[_m]]))
+        else:
+            renpy.image("Uncle " + _m, framed_sprite("Uncle", Uncle_default_art))
     del _m
 
 # ==========================================================

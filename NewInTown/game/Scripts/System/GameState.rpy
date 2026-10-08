@@ -5,18 +5,18 @@
 # The main start label - entry point of the game
 label start:
     # QUICK START - Skip to apartment building (for testing)
-    call initialize_game
-    $ in_story_scene = False  # Enable free roam
-    $ quest_meet_ms_lopez_complete = True  # Skip intro quest
-    call setup_a02_event  # Enable A02 event
-    show screen time_display
-    show screen apartment_building_screen
-    jump exploration_loop
-    
-    # NORMAL START - Uncomment these lines to play full intro
     # call initialize_game
-    # call story_intro
-    # jump free_roam_mode
+    # $ in_story_scene = False  # Enable free roam
+    # $ quest_meet_ms_lopez_complete = True  # Skip intro quest
+    # call setup_a02_event  # Enable A02 event
+    # show screen time_display
+    # show screen apartment_building_screen
+    # jump exploration_loop
+
+    # NORMAL START - Play full intro
+    call initialize_game
+    call story_intro
+    jump free_roam_mode
 
 # ==========================================================
 # INITIALIZATION
@@ -35,8 +35,10 @@ label initialize_game:
 # ==========================================================
 label story_intro:
     # Play Act 1, Scene 00 - Bus Terminal Intro
+    # (A00 is pure narration - it sets no flags, so it can be
+    # commented out again if you want to jump straight to A01.)
     call A00_INTRO_BUS_TERMINAL
-    
+
     # Play Act 1, Scene 01 - Meeting Ms. Lopez
     call A01_meeting_lopez
     

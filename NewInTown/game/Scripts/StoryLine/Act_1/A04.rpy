@@ -21,49 +21,51 @@ label A04_01_HOT_WATER_PROBLEM:
     
     "MC meets Ms. Lopez at the main lobby to discuss their arrangement. Since it will take a while before MC gets his paycheck, MC needs to do more chores for Ms. Lopez."
     
-    MsLopez curious "You're finally back. How's your job hunt?"
+    MsLopez thinking "You're finally back. How's your job hunt?"
     
-    MC proud "I got hired at a local cafe!"
+    MC confident "I got hired at a local cafe!"
     
-    MsLopez impressed "That was quick! Which means you can finally pay the rent."
+    MsLopez smirk "Good job. I'm so proud of you. I'm going to be stopping by for some coffee then."
     
-    MC bargaining "But I just got hired, so it will take a while before I can receive my first paycheck."
+    MC bargaining "It might take me a while before I can receive my first paycheck."
     
-    MsLopez sad "I figured…"
+    MsLopez joyful "That's ok, It's one step at a time."
     
-    MsLopez stressed "First, it was the old man, then it was you who could not pay the rent. And now, the other tenants are threatening not to pay as well!"
+    MsLopez sad "But it's hard."
     
-    MC curious "Why? What happened?"
+    MsLopez worried "First, it was the old man, then it was you who could not pay the rent. And now, the other tenants are threatening not to pay as well!"
+    
+    MC thinking "Why? What happened?"
     
     MsLopez explaining "Several tenants on the upper floors have been without hot water for some time now."
     
     MsLopez "They're threatening to withhold rent."
     
-    MsLopez stressed "And since no one has paid their rent yet, I can not afford to pay for a plumber."
+    MsLopez worried "And since no one has paid their rent yet, I can not afford to pay for a plumber."
     
     MC confident "I can go take a look."
     
-    MsLopez stern "You are sweet, and I am glad you're here helping."
+    MsLopez strict "You are sweet, and I am glad you're here helping."
     
-    MsLopez "But, plumbing? It's a no-no."
+    MsLopez "But, plumbing? That's not easy."
     
     MC bargaining "I handled the last task perfectly; I'm sure I can do it again. I promise."
     
-    MsLopez explaining "Honey, this isn't just tightening a bolt—those old pipes are leaking and the boiler's pressure is too high."
+    MsLopez explaining "Honey, this isn't just tightening a bolt — those old pipes are leaking, and the boiler's pressure is too high."
     
-    MsLopez "One wrong move and you could wreck it all."
+    MsLopez "What would happen if something went wrong?"
     
     MC thinking "I'm sure there is no skill that I cannot learn. Perhaps there's someone I can ask for help."
     
     MsLopez thinking "Hmmmm… Maybe you can ask Razor."
     
-    MsLopez stern "He's a retired handyman, but I will warn you. He's not very helpful to people he doesn't know."
+    MsLopez strict "He's a retired handyman, but I will warn you. He's not very helpful to people he doesn't know."
     
     MC confident "Well, I haven't met someone who doesn't like me. I'm Sure I can convince him."
     
-    MsLopez doubtful "I wouldn't hold my breath."
+    MsLopez thinking "I wouldn't hold my breath."
     
-    MsLopez "You should probably go look at the Leak first, before you go to Razor."
+    MsLopez "You should probably look at the Leak first, before you go to Razor."
     
     # Set quest flag
     $ quest_fix_hot_water = True
@@ -95,9 +97,9 @@ label A04_02_CHECK_LEAK:
     
     "After emptying the bucket, the player notices something under the sink peeking out."
     
-    MC curious "Hmmm…"
+    MC thinking "Hmmm…"
     
-    MC intrigued "I wonder what that is…"
+    MC thinking "I wonder what that is…"
     
     # Unique pose: MC finds magazines
     
@@ -135,11 +137,11 @@ label A04_03_MAGAZINES_LOPEZ:
     
     "MC brings the Magazines to Ms. Lopez."
     
-    MC hesitant "Ahmm… Ms. Lopez, I think I found something downstairs."
+    MC worried "Ahmm… Ms. Lopez, I think I found something downstairs."
     
-    MsLopez curious "What did you find?"
+    MsLopez thinking "What did you find?"
     
-    MC hesitant "Well…"
+    MC worried "Well…"
     
     MC "Ummm..."
     
@@ -155,23 +157,23 @@ label A04_03_MAGAZINES_LOPEZ:
     
     MsLopez "I'm too old now, but when I was younger, I could never fit my big butt into something like that."
     
-    MC flustered "Oh…"
+    MC blush "Oh…"
     
     MC "I—I think you're not old. I'm sure you would look great in those."
     
     MsLopez smirk "Oh, that's sweet of you, but you will not be seeing me in anything like that~"
     
-    MC panicking "Oh.. No-no…"
+    MC scared "Oh.. No-no…"
     
     MC "Oh, I wasn't trying to say I wanted to…"
     
     MC "Umm, I mean… I was just…"
     
-    MsLopez laughing "Hahaha."
+    MsLopez joyful "Hahaha."
     
     MsLopez smirk "You know who could pull off something like this?"
     
-    MC curious "Umm… Who?"
+    MC thinking "Umm… Who?"
     
     MsLopez excited "Your mom!"
     
@@ -181,13 +183,18 @@ label A04_03_MAGAZINES_LOPEZ:
     
     MC "No, thank you."
     
-    MsLopez laughing "Hahahahaha. I guess you did not know her like I did."
+    MsLopez joyful "Hahahahaha. I guess you did not know her like I did."
     
-    MsLopez thinking "Going back to the topic, I think those might be Razor's old magazines."
+    # Ms. Lopez, Pose 11: Sad - to MC
+    show MsLopez sad
     
-    MsLopez explaining "I mean, if I remember it correctly. He was the last one down there. But I'm not sure if those magazines will make him help you."
+    # MC, Pose 7: Sad - to Ms. Lopez
+    MC sad "Hey, I miss her too."
     
-    MC confident "Well… Gonna trust my luck then."
+    # Ms. Lopez, Pose 11: Sad - to MC
+    MsLopez sad "You know… these look like something Razor would have. He was the handyman for years, he would be the only one with access to the boiler room."
+    
+    MC confident "Well, let's see if he can help?"
     
     MC "I'll go talk to him."
     
@@ -218,15 +225,15 @@ label A04_04_RAZOR_BLACKMAIL:
     MC "Razor? Are you there?"
     
     # Show Razor at door
-    # show Razor grumpy
+    show Razor idle at stage_center
     
     "Razor comes to open the door."
     
-    Razor grumpy "Yeah, what do you want, kid?"
+    Razor idle "Yeah, what do you want, kid?"
     
-    MC polite "Ms. Lopez said there's a leaky pipe downstairs. She was hoping you could help fix it."
+    MC idle "Ms. Lopez said there's a leaky pipe downstairs. She was hoping you could help fix it."
     
-    Razor stern "Not my problem, kid. I'm retired for a reason. Tell her to call a plumber."
+    Razor irritated "Not my problem, kid. I'm retired for a reason. Tell her to call a plumber."
     
     MC bargaining "I see… Maybe you could teach me how to do it instead?"
     
@@ -235,7 +242,7 @@ label A04_04_RAZOR_BLACKMAIL:
 
     Razor irritated "What makes you think that I'll teach you, ey?"
     
-    MC mischievous "Well… I figured you would. Coz I found something that maybe belongs to you."
+    MC smug "Well… I figured you would. Coz I found something that maybe belongs to you."
     
     Razor suspicious "…"
     
@@ -247,7 +254,7 @@ label A04_04_RAZOR_BLACKMAIL:
     
     Razor shocked "…You found my old Playboy stash!?"
     
-    MC mischievous "So it was truly yours…"
+    MC smug "So it was yours…"
     
     MC "It would be a shame if the whole building knows about Razor's, uh… \"collector's edition\" magazines."
     
@@ -257,7 +264,9 @@ label A04_04_RAZOR_BLACKMAIL:
     
     Razor "Fine. I'll fix the damn pipe. Just… keep your mouth shut."
     
-    Razor stern "You'll be my assistant, so you can do it yourself next time."
+    Razor irritated "Fine. I'll fix the damn pipe. Just… keep your mouth shut."
+    
+    Razor "Meet me in the boiler room."
     
     MC happy "Deal."
     
@@ -284,7 +293,7 @@ label A04_05_FIX_LEAK:
     scene bg apartment_basement with fade
     
     # Show Razor
-    # show Razor thinking
+    show Razor thinking at stage_center
     
     "MC must take this opportunity to gain some clues while holding some small talk with Razor as they fix the leaking pipe."
     
@@ -300,15 +309,15 @@ label A04_05_FIX_LEAK:
     
     "After a few seconds of dead silence, MC finally talks to Razor while they work."
     
-    MC curious "Soooo…"
+    MC thinking "Soooo…"
     
     MC "How long have you been here?"
     
-    Razor serious "Too long…"
+    Razor thinking "Too long…"
     
-    MC curious "How long is that?"
+    MC thinking "How long is that?"
     
-    Razor serious "Long enough to see everything around here."
+    Razor thinking "Long enough to see everything around here."
     
     Razor "There's a reason why I'm retired now, Kiddo."
     
@@ -329,9 +338,9 @@ label A04_05_FIX_LEAK:
 # Option 1: Pry for answers
 label .pry:
     
-    MC confused "What do you mean by that?"
+    MC thinking "What do you mean by that?"
     
-    Razor stern "Look, kid. You are new to this town."
+    Razor irritated "Look, kid. You are new to this town."
     
     Razor "Just don't stick your nose where it doesn't belong if you don't want to get in trouble."
     
@@ -340,9 +349,9 @@ label .pry:
 # Option 2: Play it safe
 label .safe:
     
-    MC curious "I see… Got any advice for the newcomer in town?"
+    MC thinking "I see… Got any advice for the newcomer in town?"
     
-    Razor stern "Just don't stick your nose where it doesn't belong, and you'll be fine."
+    Razor irritated "Just don't stick your nose where it doesn't belong, and you'll be fine."
     
     Razor "After all, curiosity kills the cat."
     
@@ -357,17 +366,17 @@ label .merge:
     
     # Unique pose: Razor wipes forehead, MC turns off flashlight
     
-    Razor serious "Alright, that should do it."
+    Razor thinking "Alright, that should do it."
     
     Razor "I keep our deal, so you better shut your mouth."
     
-    MC polite "Certainly! Thank you for your help!"
+    MC idle "Certainly! Thank you for your help!"
     
     # hide Razor
     
     "Razor leaves the place."
     
-    MC proud "Another task completed…"
+    MC confident "Another task completed…"
     
     MC "Better report this to Ms. Lopez immediately."
     
